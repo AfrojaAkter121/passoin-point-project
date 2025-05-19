@@ -6,29 +6,29 @@ import { Link } from 'react-router';
 const Login = () => {
     return (
         <div
-      className="flex justify-center items-center min-h-screen py-16 bg-center bg-cover bg-no-repeat bg-blend-overlay bg-gradient-to-l from-[#8ce2f8] via-gray-800 to-gray-900"
+      className="flex justify-center items-center min-h-screen py-16 bg-center bg-cover bg-no-repeat bg-blend-overlay "
       style={{
         backgroundImage:
-          "url('https://i.ibb.co/N6CYjXQ6/steve-busch-nn-VJjtopahg-unsplash.jpg')",
+          "url('https://i.ibb.co/ymyTfLHx/gustavo-zambelli-JMK4lyhn-GM-unsplash.jpg)",
       }}
     >
-      <form className="flex text-white bg-gradient-to-r from-[#8ce2f8] via-gray-800 to-gray-900 backdrop-blur-lg bg-white/20  border border-white/40 shadow-xl rounded-2xl flex-col gap-4 py-10 px-8 w-lg ">
+      <form className="flex text-white bg-gradient-to-r from-[#1ad3bd] via-gray-800 to-gray-900 backdrop-blur-lg bg-white/20  border border-white/40 shadow-xl rounded-2xl flex-col gap-4 py-10 px-8 w-lg ">
         <h1 className="text-3xl mb-4">Login Your Account</h1>
         <input
-          className="bg-gradient-to-l from-[#79e0fa] via-gray-600 to-gray-900 rounded px-4 py-2 focus:outline-none"
+          className="bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 rounded px-4 py-2 focus:outline-none"
           type="email"
           name="email"
           placeholder="Your Email"
         />
         <input
-          className="bg-gradient-to-l from-[#79e0fa] via-gray-600 to-gray-900 rounded px-4 py-2  focus:outline-none"
+          className="bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 rounded px-4 py-2  focus:outline-none"
           type="password"
           name="password"
           placeholder="Password"
         />
         <a href='#' className="text-sm text-black underline">Forgot password</a>
 
-        <button className="px-6 py-3 mt-8 rounded-full bg-gradient-to-r from-white via-white to-[#0aa8cf] text-black font-medium shadow-md hover:scale-105 transition-transform">
+        <button className="px-6 py-3 mt-8 rounded-full bg-gradient-to-r from-white via-white to-[#1ad3bd] text-black font-medium shadow-md hover:scale-105 transition-transform">
           Log In
         </button>
 
@@ -37,7 +37,7 @@ const Login = () => {
         <button
           className="flex items-center 
           justify-center gap-2 px-4 py-2
-           bg-gradient-to-l from-[#79e0fa]
+           bg-gradient-to-l from-[#68fced]
             via-gray-600 to-gray-900 text-white
             rounded-full"
         >
@@ -47,7 +47,7 @@ const Login = () => {
         <button
           className="flex items-center
            justify-center gap-2 px-4
-            py-2 bg-gradient-to-l from-[#79e0fa]
+            py-2 bg-gradient-to-l from-[#68fced]
              via-gray-600 to-gray-900
              text-white rounded-full"
         >
