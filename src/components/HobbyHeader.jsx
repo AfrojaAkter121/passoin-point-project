@@ -1,5 +1,6 @@
 import React from "react";
 import { FaSwimmer, FaBiking, FaBasketballBall, FaFutbol } from "react-icons/fa";
+import { Typewriter } from "react-simple-typewriter";
 
 export default function HobbyHeader() {
   return (
@@ -8,7 +9,17 @@ export default function HobbyHeader() {
       <div className="max-w-xl">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           Your Gateway to <br />
-          <span className="text-teal-600">Passion, Creativity, and Connection</span>
+          <span className="text-teal-600">
+    <Typewriter
+      words={['Passion', 'Creativity', 'Connection', 'Growth', 'Fun']}
+      loop={true}
+      cursor
+      cursorStyle="|"
+      typeSpeed={70}
+      deleteSpeed={50}
+      delaySpeed={1500}
+    />
+  </span>
         </h1>
         <p className="text-gray-600 mb-4">
           At HobbyHub, we believe that hobbies aren’t just pastimes—they’re gateways to discovery, creativity, and meaningful connections.
