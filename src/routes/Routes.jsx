@@ -7,12 +7,17 @@ import MyGroups from "../Pages/MyGroups";
 import CreateGroup from "../Pages/CreateGroup";
 import AllGroups from "../Pages/AllGroups";
 import PrivateRoute from "./PrivateRoute";
+import Home from "../Pages/Home";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
     children: [
+      {
+        path: "/",
+        Component: Home,
+      },
       {
         path: '/myGroups',
         element: <PrivateRoute>
