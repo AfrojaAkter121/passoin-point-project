@@ -1,21 +1,51 @@
-import {
-    createBrowserRouter,
-  } from "react-router";
+import { createBrowserRouter } from "react-router";
 import MainLayout from "../layout/MainLayout";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
+import Authentication from "../Pages/Authentication";
+import MyGroups from "../Pages/MyGroups";
+import CreateGroup from "../Pages/CreateGroup";
+import AllGroups from "../Pages/AllGroups";
+import PrivateRoute from "./PrivateRoute";
 
-  export const router = createBrowserRouter([
-    {
-      path: "/",
-      Component: MainLayout,
-    },
-    {
-        path: 'signup',
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    Component: MainLayout,
+    children: [
+      {
+        path: '/myGroups',
+        element: <PrivateRoute>
+          <MyGroups />
+          </PrivateRoute>,
+      },
+      {
+        path:''
+      },
+      {
+        path: '/createGroup',
+        Component: CreateGroup,
+      },
+      {
+        path: '/allGroups',
+        element: <PrivateRoute>
+          <AllGroups />
+          </PrivateRoute>,
+      },
+    ]
+  },
+  {
+    path: "/auth",
+    Component: Authentication,
+    children: [
+      {
+        path: "/auth/signup",
         Component: Register,
-    },
-    {
-    path: '/signin',
-    Component : Login,
-    }
-  ]);
+      },
+      {
+        path: "/auth/signin",
+        Component: Login,
+      },
+    ],
+  },
+]);
