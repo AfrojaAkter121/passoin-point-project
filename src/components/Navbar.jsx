@@ -1,11 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import { Bounce, toast } from "react-toastify";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut,darkMode, setDarkMode } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
+  
+
+  useEffect(() => {
+    if(darkMode){
+      document.body.style.backgroundColor = "#1a1a1a";
+      document.body.style.color = "white";
+    }else{
+      document.body.style.backgroundColor = "#fff";
+      document.body.style.color = "#000";
+    }
+  },[darkMode])
+
 
   const handleLogout = () => {
       logOut().then(() => {
@@ -84,7 +96,7 @@ const Navbar = () => {
             alt="Logo"
             className="w-10 h-10 rounded-full object-cover"
           />
-          <h1 className="text-2xl font-semibold bg-gradient-to-r from-[#363a39] to-[#0ea899] bg-clip-text text-transparent">
+          <h1 className={`text-2xl font-semibold bg-gradient-to-r from-[#7d8885] to-[#0ea899] bg-clip-text text-transparent`}>
             PassionPoint
           </h1>
         </div>
@@ -123,8 +135,16 @@ const Navbar = () => {
               </Link>
             )}
           </div>
+           {/* Dark Mode Toggle */}
+        <div>
+          <button onClick={()=> setDarkMode(!darkMode)}>
+            {
+              darkMode ? '🌙' : '☀️ '
+            }
+          </button>
         </div>
 
+        </div>
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)}>
