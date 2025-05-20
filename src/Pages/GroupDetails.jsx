@@ -1,9 +1,24 @@
 import React from "react";
 import { useLoaderData } from "react-router";
+import { Bounce, toast } from "react-toastify";
 
 const GroupDetails = () => {
   const group = useLoaderData();
   console.log("Group:", group);
+
+  const handleJoin = () => {
+    toast.info("🤝 Welcome to the group!", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+  }
 
   return (
     <div className="flex w-full min-h-screen items-center justify-center p-6">
@@ -45,7 +60,7 @@ const GroupDetails = () => {
             </div>
 
             {new Date(group.startDate) > new Date() ? (
-              <button className="flex items-center gap-2 bg-teal-600 hover:bg-[#042f3d] text-white rounded-full px-6 py-3 transition-all duration-300">
+              <button onClick={handleJoin} className="flex items-center gap-2 bg-teal-600 hover:bg-[#042f3d] text-white rounded-full px-6 py-3 transition-all duration-300">
                 <svg
                   className="w-5 h-5"
                   fill="none"

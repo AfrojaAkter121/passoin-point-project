@@ -33,22 +33,29 @@ const CreateGroup = () => {
     }
 
   return (
-    <div>
-      <div className="mt-10 mx-auto bg-teal-600  p-5 border border-white/40 shadow-xl rounded mt-6">
-      <h2 className="text-xl text-black font-bold mb-4">Create a New Hobby Group</h2>
+    <div className="flex w-full min-h-[800px] py-10  ">
+    {/* Left Image Section */}
+    <div className="w-1/2  min-h-[800px] rounded-l-xl bg-cover bg-center border-t-4 border-l-4 border-b-4 border-teal-700"
+    style={{backgroundImage: "url('https://i.ibb.co/v6wD4s6j/read-1342499-1280.jpg')"}}>
+     
+    </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4 text-white">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
+    {/* Right Form Section */}
+    <form onSubmit={handleSubmit} className="w-1/2 p-12 bg-white rounded-r-xl flex flex-col justify-center border-t-4 border-r-4 border-b-4 border-teal-700">
+    <h2 className="text-2xl text-teal-700 font-semibold font-bold mb-4">Create a New Hobby Group</h2>
+
+      <div className="mb-6">
+        <label className="text-sm font-semibold text-teal-800">Group Name And Category</label>
+        <div className="grid grid-cols-2 gap-4 mt-2">
+        <input
             name="groupName"
             placeholder="Group Name"
-            className="w-full bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 text-white font-medium shadow-md border p-2 rounded"
+            className="border-2 border-teal-700 focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#3e9287] font-semibold transition duration-500"
             required
           />
-
           <select
             name="category"
-            className="w-full border p-2 bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 font-medium shadow-md rounded"
+            className="border-2 border-teal-700 focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#3e9287] font-semibold transition duration-500"
             required
           >
             <option className="text-black" value="">Select Hobby Category</option>
@@ -61,65 +68,94 @@ const CreateGroup = () => {
             <option className="text-black" value="Reading">Reading</option>
             <option className="text-black" value="Writing">Writing</option>
           </select>
+        </div>
+      </div>
 
-          <textarea
+      <div className="mb-6">
+        <label className="text-sm font-semibold text-teal-800">Description</label>
+        <textarea
             name="description"
             placeholder="Description"
-            className="w-full border bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 text-white font-medium shadow-md text-black font-medium shadow-md  p-2 rounded"
+            className="w-full border-2 border-teal-700 focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#3e9287] font-semibold transition duration-500"
             required
           />
+      </div>
 
-          <input
+      <div className="mb-6">
+        <label className="text-sm font-semibold text-teal-800">Locaion & Max Member & Date</label>
+        <div className="grid grid-cols-3 gap-4 mt-2">
+        <input
             name="meetingLocation"
             placeholder="Meeting Location"
-            className="w-full bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 text-white font-medium shadow-md border p-2 rounded"
+            className="border-2 border-teal-700 focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#3e9287] font-semibold transition duration-500"
             required
           />
           <input
             type="number"
             name="maxMembers"
             placeholder="Max Members"
-            className="w-full bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 text-white font-medium shadow-md border p-2 rounded"
+            className="border-2 border-teal-700 focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#3e9287] font-semibold transition duration-500"
             required
           />
-
           <input
             type="date"
             name="startDate"
-            className="w-full bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 text-white font-medium shadow-md border p-2 rounded"
+            className="border-2 border-teal-700 focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#3e9287] font-semibold transition duration-500"
             required
           />
+        </div>
+        <div>
+        </div>
+      </div>
 
-          <input
+      <div className="mb-6">
+        <label className="text-sm font-semibold text-teal-800">User Name and Email</label>
+        <div className="grid grid-cols-2 gap-4 mt-2">
+        <input
             name="userName"
             defaultValue="Afroja"
             readOnly
-            className="w-full bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 text-white font-medium shadow-md border p-2 rounded bg-gray-100"
+            className="w-full border-2 border-teal-700 focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#3e9287] font-semibold transition duration-500"
           />
           <input
             name="userEmail"
             defaultValue="afroja@example.com"
             readOnly
-            className="w-full bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 text-white font-medium shadow-md border p-2 rounded bg-gray-100"
+            className="w-full border-2 border-teal-700 focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#3e9287] font-semibold transition duration-500"
           />
+         
         </div>
+        <div>
+        </div>
+      </div>
 
+
+      <div className="mb-8">
+        <label className="text-sm font-semibold text-teal-700">Photo Url</label>
         <input
           name="imageUrl"
           placeholder="Image URL"
-          className="w-full bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 text-white font-medium shadow-md border p-2 rounded"
+          className="w-full border-2 border-teal-700 focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#3e9287] font-semibold transition duration-500"
           required
         />
+      </div>
 
-        <button
+      <div className="flex items-center gap-6">
+      <button
           type="submit"
-          className="px-6 w-full py-3 mt-8 rounded-full bg-gradient-to-r from-white via-white to-[#1ad3bd] text-black font-medium shadow-md hover:scale-105 transition-transform"
+          className="px-6 w-full py-3 mt-8 rounded-full bg-gradient-to-r from-teal-700 via-teal-400 to-teal-500 text-black font-medium shadow-md hover:scale-105 transition-transform"
         >
           Create Group
         </button>
-      </form>
-    </div>
-    </div>
+      </div>
+
+      <div className="mt-8 flex justify-center gap-2">
+        <div className="w-2 h-2 rounded-full bg-[#ccc]"></div>
+        <div className="w-2 h-2 rounded-full bg-[#ccc]"></div>
+        <div className="w-2 h-2 rounded-full bg-[#cc5e33]"></div>
+      </div>
+    </form>
+  </div>
   );
 };
 
