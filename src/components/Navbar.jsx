@@ -42,8 +42,8 @@ const Navbar = () => {
         to="/"
         className={({ isActive }) =>
           isActive
-            ? "border-b-2 text-white text-center bg-[#0ea899] w-30 h-8 font-semibold rounded-lg"
-            : "text-[#0ea899] font-semibold"
+            ? "border-b-2 text-white text-center bg-teal-600 w-30 h-8 font-semibold rounded-lg"
+            : "text-teal-600 font-semibold"
         }
       >
         Home
@@ -52,19 +52,19 @@ const Navbar = () => {
         to="/myGroups"
         className={({ isActive }) =>
           isActive
-            ? "border-b-2 text-white text-center bg-[#0ea899] w-30 h-8 font-semibold rounded-lg"
-            : "text-[#0ea899] font-semibold"
+            ? "border-b-2 text-white text-center bg-teal-600 w-30 h-8 font-semibold rounded-lg"
+            : "text-teal-600 font-semibold"
         }
       >
-        All Groups
+        My Groups
       </NavLink>
       <NavLink
         to="/createGroup"
         onClick={() => setIsOpen(false)}
         className={({ isActive }) =>
           isActive
-            ? "border-b-2 text-white text-center bg-[#0ea899] w-30 h-8 font-semibold rounded-lg"
-            : "text-[#0ea899] font-semibold"
+            ? "border-b-2 text-white text-center bg-teal-600 w-30 h-8 font-semibold rounded-lg"
+            : "text-teal-600 font-semibold"
         }
       >
         Create Group
@@ -74,11 +74,11 @@ const Navbar = () => {
         onClick={() => setIsOpen(false)}
         className={({ isActive }) =>
           isActive
-            ? "border-b-2 text-white text-center bg-[#0ea899] w-30 h-8 font-semibold rounded-lg"
-            : "text-[#0ea899] font-semibold"
+            ? "border-b-2 text-white text-center bg-teal-600 w-30 h-8 font-semibold rounded-lg"
+            : "text-teal-600 font-semibold"
         }
       >
-        My Groups
+        All Group
       </NavLink>
     </div>
   );

@@ -33,6 +33,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/allGroups',
+        loader: () => fetch('http://localhost:4000/groups'),
         element: <PrivateRoute>
           <AllGroups />
           </PrivateRoute>,

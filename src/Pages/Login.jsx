@@ -24,7 +24,7 @@ const Login = () => {
     .then((result) => {
       const user = result.user;
       console.log(user);
-
+      navigate(`${location.state ? location.state: '/'}`);
       Swal.fire({
         title: "Login Success!",
         icon: "success",
