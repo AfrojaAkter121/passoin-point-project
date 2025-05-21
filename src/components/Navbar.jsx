@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import { Bounce, toast } from "react-toastify";
+import { MdLightMode } from "react-icons/md";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 const Navbar = () => {
   const { user, logOut,darkMode, setDarkMode } = useContext(AuthContext);
@@ -137,9 +139,9 @@ const Navbar = () => {
           </div>
            {/* Dark Mode Toggle */}
         <div>
-          <button onClick={()=> setDarkMode(!darkMode)}>
+          <button className="flex items-center text-2xl" onClick={()=> setDarkMode(!darkMode)}>
             {
-              darkMode ? '🌙' : '☀️ '
+              darkMode ? '🌞'  :  '🌜 ' 
             }
           </button>
         </div>
