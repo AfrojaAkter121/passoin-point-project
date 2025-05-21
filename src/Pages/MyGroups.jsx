@@ -147,8 +147,11 @@ const MyGroups = () => {
                   </td>
 
                   <td className="p-3 space-x-4">
+                    
                     <button className="bg-gradient-to-r from-[#2dacac] to-[#04767a] text-white p-3 rounded-full">
+                      <Link  to={`/updateGroup/${group._id}`}>
                       <BiSolidEdit size={25} />
+                      </Link>
                     </button>
                     <button
                       onClick={() => handleDelete(group._id)}
