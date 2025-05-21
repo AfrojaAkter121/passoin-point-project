@@ -40,19 +40,10 @@ const UpdateGroup = () => {
 
   return (
     <div className="flex w-full min-h-[800px] py-10  ">
-      {/* Left Image Section */}
-      <div
-        className="w-1/2  min-h-[800px] rounded-l-xl bg-cover bg-center border-t-4 border-l-4 border-b-4 border-teal-700"
-        style={{
-          backgroundImage:
-            `url(${group.imageUrl})`,
-        }}
-      ></div>
-
       {/* Right Form Section */}
       <form
         onSubmit={handleUpdate}
-        className="w-1/2 p-12 bg-white rounded-r-xl flex flex-col justify-center border-t-4 border-r-4 border-b-4 border-teal-700"
+        className="w-1/2 p-12 bg-white rounded-l-xl flex flex-col justify-center border-t-4 border-l-4 border-b-4 border-teal-700"
       >
         <h2 className="text-2xl text-teal-700 font-semibold font-bold mb-4">
           Update Your Hobby Group
@@ -200,6 +191,15 @@ const UpdateGroup = () => {
           <div className="w-2 h-2 rounded-full bg-[#cc5e33]"></div>
         </div>
       </form>
+
+         {/* Left Image Section */}
+         <div
+        className="w-1/2  min-h-[800px] rounded-r-xl bg-cover bg-center border-t-4 border-r-4 border-b-4 border-teal-700"
+        style={{
+          backgroundImage:
+            `url(${group.imageUrl})`,
+        }}
+      ></div>
     </div>
   );
 };

@@ -18,6 +18,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        loader: () => fetch('http://localhost:4000/groups'),
         Component: Home,
       },
       {

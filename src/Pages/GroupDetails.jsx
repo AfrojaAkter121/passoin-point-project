@@ -4,7 +4,6 @@ import { Bounce, toast } from "react-toastify";
 
 const GroupDetails = () => {
   const group = useLoaderData();
-  console.log("Group:", group);
 
   const handleJoin = () => {
     toast.info("🤝 Welcome to the group!", {
@@ -29,7 +28,7 @@ const GroupDetails = () => {
           <div
             className="absolute top-0 left-0 w-full h-full bg-no-repeat bg-left opacity-10"
             style={{
-              backgroundImage: `url('/images/brush-effect.png')`,
+              backgroundImage: `url(${group.imageUrl})`,
               backgroundSize: "cover",
               zIndex: 0,
             }}
@@ -37,7 +36,7 @@ const GroupDetails = () => {
 
           <div className="relative z-10">
             <h2 className="text-3xl font-bold mb-2">{group.groupName}</h2>
-            <p className="mb-4 text-sm text-white">{group.description}</p>
+            <p className="mb-4 text-sm text-white"><strong>Description :</strong> {group.description}</p>
 
             <ul className="space-y-3 mb-6 text-lg">
               <li>
@@ -59,7 +58,7 @@ const GroupDetails = () => {
               <p className="text-sm">Email: {group.userEmail}</p>
             </div>
 
-            {new Date(group.startDate) >= new Date() ? (
+            {new Date(group.startDate).setHours(0, 0, 0, 0) >= new Date().setHours(0, 0, 0, 0) ? (
               <button onClick={handleJoin} className="flex items-center gap-2 bg-teal-600 hover:bg-[#042f3d] text-white rounded-full px-6 py-3 transition-all duration-300">
                 <svg
                   className="w-5 h-5"
