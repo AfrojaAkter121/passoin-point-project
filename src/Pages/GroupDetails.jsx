@@ -59,7 +59,7 @@ const GroupDetails = () => {
               <p className="text-sm">Email: {group.userEmail}</p>
             </div>
 
-            {new Date(group.startDate) > new Date() ? (
+            {new Date(group.startDate) >= new Date() ? (
               <button onClick={handleJoin} className="flex items-center gap-2 bg-teal-600 hover:bg-[#042f3d] text-white rounded-full px-6 py-3 transition-all duration-300">
                 <svg
                   className="w-5 h-5"

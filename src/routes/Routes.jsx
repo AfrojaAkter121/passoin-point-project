@@ -30,7 +30,9 @@ export const router = createBrowserRouter([
       },
       {
         path: '/createGroup',
-        Component: CreateGroup,
+        element: <PrivateRoute>
+          <CreateGroup/>
+        </PrivateRoute>
       },
       {
         path: '/allGroups',

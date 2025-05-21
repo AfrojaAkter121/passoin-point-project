@@ -1,9 +1,10 @@
-import React from "react";
-import { FaBasketballBall, FaBiking, FaFutbol, FaRegCircle, FaSwimmer } from "react-icons/fa";
+import React, { use } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Context/AuthProvider";
 
 const CreateGroup = () => {
-
+  const {user } = use(AuthContext)
+ console.log(user)
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -36,7 +37,7 @@ const CreateGroup = () => {
     <div className="flex w-full min-h-[800px] py-10  ">
     {/* Left Image Section */}
     <div className="w-1/2  min-h-[800px] rounded-l-xl bg-cover bg-center border-t-4 border-l-4 border-b-4 border-teal-700"
-    style={{backgroundImage: "url('https://i.ibb.co/v6wD4s6j/read-1342499-1280.jpg')"}}>
+    style={{backgroundImage: "url('https://i.ibb.co/qM8wp7SK/bmx-5142643-1280.jpg')"}}>
      
     </div>
 
@@ -113,13 +114,13 @@ const CreateGroup = () => {
         <div className="grid grid-cols-2 gap-4 mt-2">
         <input
             name="userName"
-            defaultValue="Afroja"
+            defaultValue={user.displayName}
             readOnly
             className="w-full border-2 border-teal-700 focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#3e9287] font-semibold transition duration-500"
           />
           <input
             name="userEmail"
-            defaultValue="afroja@example.com"
+            defaultValue={user.email}
             readOnly
             className="w-full border-2 border-teal-700 focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#3e9287] font-semibold transition duration-500"
           />
