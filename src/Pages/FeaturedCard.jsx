@@ -1,11 +1,8 @@
 import React from 'react';
 import Feature from './Feature';
 
-
 const FeaturedCard = ({activeGroup}) => {
-console.log(activeGroup)
-
-
+    
     return (
         <div>
             <h1 className='text-3xl text-center font-thin py-3'>✨ Active Communities to Explore</h1>
