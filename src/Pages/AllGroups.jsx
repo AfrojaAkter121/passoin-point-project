@@ -4,12 +4,16 @@ import { useLoaderData, Link } from 'react-router';
 import GroupCard from './GroupCard';
 import noDataAnimation from '../../public/no-group.json'
 import Lottie from 'lottie-react';
+import { Helmet } from 'react-helmet-async';
 
 const AllGroups = () => {
   const groups = useLoaderData();
 
   return (
     <div>
+      <Helmet>
+        <title>All Groups _ PassionPoint</title>
+      </Helmet>
        {
                 groups.length === 0 &&  <div className="w-ful flex flex-col items-center justify-center min-h-[70vh] text-center">
                 <Lottie

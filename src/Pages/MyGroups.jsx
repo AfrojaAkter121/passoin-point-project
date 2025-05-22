@@ -6,6 +6,7 @@ import { MdAutoDelete } from "react-icons/md";
 import { Link } from "react-router";
 import noDataAnimation from "../../public/no-data.json";
 import Lottie from "lottie-react";
+import { Helmet } from "react-helmet-async";
 
 const MyGroups = () => {
   const { user } = use(AuthContext);
@@ -52,6 +53,9 @@ const MyGroups = () => {
   console.log(myGroups);
   return (
     <div className="p-6 md:p-10 min-h-screen">
+      <Helmet>
+        <title>My Groups _ PassionPoint</title>
+      </Helmet>
       <div className="min-h-screen bg-white rounded-xl text-[#ac2d6d] rounded-lg border-4 border-[#ac2d6d] p-8">
         <h1 className="text-4xl font-bold text-center mb-2">My Hobby Groups</h1>
         <p className="max-w-xl text-center mx-auto mb-8">
@@ -115,9 +119,9 @@ const MyGroups = () => {
                     key={group._id}
                     className="text-center hover:bg-[#8d3661] hover:text-white"
                   >
-                    <td>
+                    <td className="p-4">
                       <img
-                        className="w-40 h-40 p-5 object-cover rounded-full"
+                        className="w-60 h-40 object-cover rounded-2xl"
                         src={group.imageUrl}
                         alt=""
                       />

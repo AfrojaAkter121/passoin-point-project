@@ -7,6 +7,7 @@ import { ProviderId, signInWithPopup, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase.config";
 import { Bounce, } from "react-toastify";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const {createUser, setUser} = use(AuthContext)
@@ -97,6 +98,9 @@ const Register = () => {
           "url('https://i.ibb.co/ymyTfLHx/gustavo-zambelli-JMK4lyhn-GM-unsplash.jpg')",
       }}
     >
+      <Helmet>
+        <title>Register _ PassionPoint</title>
+      </Helmet>
       <form onSubmit={handleSubmit} className="flex text-white bg-gradient-to-r from-[#1ad3bd] via-gray-800 to-gray-900 backdrop-blur-lg bg-white/20  border border-white/40 shadow-xl rounded-2xl flex-col gap-4 py-10 px-8 w-lg ">
         <h1 className="text-3xl">Register Your Account</h1>
 

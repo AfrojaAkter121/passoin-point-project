@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { signInWithPopup } from 'firebase/auth';
 import { auth } from '../utils/firebase.config';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
   const {loginUser} = use(AuthContext)
@@ -73,6 +74,9 @@ const Login = () => {
           "url('https://i.ibb.co/ymyTfLHx/gustavo-zambelli-JMK4lyhn-GM-unsplash.jpg)",
       }}
     >
+      <Helmet>
+        <title>Log In _ PassionPoint</title>
+      </Helmet>
       <form onSubmit={handleSubmit} className="flex text-white bg-gradient-to-r from-[#1ad3bd] via-gray-800 to-gray-900 backdrop-blur-lg bg-white/20  border border-white/40 shadow-xl rounded-2xl flex-col gap-4 py-10 px-8 w-lg ">
         <h1 className="text-3xl mb-4">Login Your Account</h1>
         <input

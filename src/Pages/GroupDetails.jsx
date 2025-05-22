@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router";
 import { Bounce, toast } from "react-toastify";
 
@@ -21,6 +22,9 @@ const GroupDetails = () => {
 
   return (
     <div className="flex w-full min-h-screen items-center justify-center p-6">
+      <Helmet>
+        <title>Group Details _ PassionPoint</title>
+      </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-6xl shadow-lg bg-white rounded-lg overflow-hidden">
         {/* Left Side */}
         <div className="bg-teal-800 text-white p-10 relative overflow-hidden">

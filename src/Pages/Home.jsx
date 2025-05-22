@@ -4,6 +4,7 @@ import FeaturedCard from "./FeaturedCard";
 import { useLoaderData } from "react-router";
 import UpComingEvent from "./UpComingEvent";
 import AboutHobbyHub from "./AboutHobbyHub";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const groups = useLoaderData();
@@ -30,6 +31,9 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Home _ PassionPoint</title>
+      </Helmet>
       <HobbyHeader></HobbyHeader>
       <FeaturedCard activeGroup={activeGroup}></FeaturedCard>
       <AboutHobbyHub></AboutHobbyHub>

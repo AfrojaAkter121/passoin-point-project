@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const UpdateGroup = () => {
   const { user } = use(AuthContext);
@@ -37,6 +38,9 @@ const UpdateGroup = () => {
 
   return (
     <div className="flex w-full min-h-[800px] py-10  ">
+      <Helmet>
+        <title>Update Your Group _ PassionPoint</title>
+      </Helmet>
       {/* Right Form Section */}
       <form
         onSubmit={handleUpdate}

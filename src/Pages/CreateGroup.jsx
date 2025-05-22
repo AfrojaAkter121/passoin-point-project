@@ -2,6 +2,7 @@ import React, { use } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthProvider";
 import { useNavigate } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const CreateGroup = () => {
   const { user } = use(AuthContext);
@@ -37,6 +38,9 @@ const CreateGroup = () => {
 
   return (
     <div className="flex w-full min-h-[800px] py-10  ">
+      <Helmet>
+        <title>Create Groups _ PassionPoint</title>
+      </Helmet>
       {/* Left Image Section */}
       <div
         className="w-1/2  min-h-[800px] rounded-l-xl bg-cover bg-center border-t-4 border-l-4 border-b-4 border-teal-700"

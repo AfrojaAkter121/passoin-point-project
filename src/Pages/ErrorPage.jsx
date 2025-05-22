@@ -1,10 +1,14 @@
 import React from 'react';
 import Lottie from 'lottie-react';
 import errorAnimation from '../../public/notFound.json'; // তোমার Lottie animation path
+import { Helmet } from 'react-helmet-async';
 
 const ErrorPage = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen   px-4 text-center">
+        <Helmet>
+        <title>Error _ PassionPoint</title>
+      </Helmet>
       <div className="w-96 max-w-full">
         <Lottie animationData={errorAnimation} loop={true} />
       </div>
