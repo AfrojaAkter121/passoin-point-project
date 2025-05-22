@@ -3,7 +3,7 @@ import { FaGithub, FaSquareFacebook } from "react-icons/fa6";
 import { GrGoogle } from "react-icons/gr";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
-import { updateProfile } from "firebase/auth";
+import { ProviderId, signInWithPopup, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase.config";
 import { Bounce, } from "react-toastify";
 import Swal from "sweetalert2";
@@ -65,6 +65,30 @@ const Register = () => {
     }))
   }
 
+   // google sign up
+
+   const handleGoogleSignIn = () => {
+
+
+    signInWithPopup(auth, ProviderId)
+    .then(() => {
+      Swal.fire({
+        title: "Google Signup Success!",
+        icon: "success",
+        draggable: true
+      });
+      navigate(`${location.state ? location.state: '/'}`);
+    }).catch(err => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.message,
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
+    })
+  }
+  
+
   return (
     <div
       className="flex justify-center items-center min-h-screen py-16 bg-center bg-cover bg-no-repeat bg-blend-overlay "
@@ -119,6 +143,7 @@ const Register = () => {
           Continue with Github
         </button>
         <button
+        onClick={handleGoogleSignIn}
           className="flex items-center
            justify-center gap-2 px-4
             py-2 bg-gradient-to-l from-[#68fced]

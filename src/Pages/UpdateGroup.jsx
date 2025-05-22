@@ -6,36 +6,33 @@ import Swal from "sweetalert2";
 const UpdateGroup = () => {
   const { user } = use(AuthContext);
   const group = useLoaderData();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-
-  
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const formEntries = Object.fromEntries(formData.entries())
-    
+    const formEntries = Object.fromEntries(formData.entries());
 
-    // save the database 
-    fetch(`http://localhost:4000/updateGroup/${group._id}`,{
-      method: 'PUT',
+    // save the database
+    fetch(`https://passion-point-server.vercel.app/updateGroup/${group._id}`, {
+      method: "PUT",
       headers: {
-        'Content-type' : 'Application/json',
+        "Content-type": "Application/json",
       },
-      body: JSON.stringify(formEntries)
+      body: JSON.stringify(formEntries),
     })
-    .then(res => res.json())
-    .then(data => {
-      if(data.modifiedCount){
-        Swal.fire({
-          title: "Update!",
-          icon: "success",
-          draggable: true
-        });
-        navigate('/myGroups')
-      }
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          Swal.fire({
+            title: "Update!",
+            icon: "success",
+            draggable: true,
+          });
+          navigate("/myGroups");
+        }
+      });
   };
 
   return (
@@ -192,12 +189,11 @@ const UpdateGroup = () => {
         </div>
       </form>
 
-         {/* Left Image Section */}
-         <div
+      {/* Left Image Section */}
+      <div
         className="w-1/2  min-h-[800px] rounded-r-xl bg-cover bg-center border-t-4 border-r-4 border-b-4 border-teal-700"
         style={{
-          backgroundImage:
-            `url(${group.imageUrl})`,
+          backgroundImage: `url(${group.imageUrl})`,
         }}
       ></div>
     </div>

@@ -18,46 +18,60 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch('http://localhost:4000/groups'),
+        loader: () => fetch("https://passion-point-server.vercel.app/groups"),
         Component: Home,
       },
       {
-        path: '/myGroups',
-        element: <PrivateRoute>
-          <MyGroups />
-          </PrivateRoute>,
+        path: "/myGroups",
+        element: (
+          <PrivateRoute>
+            <MyGroups />
+          </PrivateRoute>
+        ),
       },
       {
-        path:''
+        path: "",
       },
       {
-        path: '/createGroup',
-        element: <PrivateRoute>
-          <CreateGroup/>
-        </PrivateRoute>
+        path: "/createGroup",
+        element: (
+          <PrivateRoute>
+            <CreateGroup />
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/allGroups',
-        loader: () => fetch('http://localhost:4000/groups'),
-        element: <PrivateRoute>
-          <AllGroups />
-          </PrivateRoute>,
+        path: "/allGroups",
+        loader: () => fetch("https://passion-point-server.vercel.app/groups"),
+        element: (
+          <PrivateRoute>
+            <AllGroups />
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/groups/:id',
-        loader: ({params}) => fetch(`http://localhost:4000/groups/${params.id}`),
-        element: <PrivateRoute>
-          <GroupDetails />
-          </PrivateRoute>,
+        path: "/groups/:id",
+        loader: ({ params }) =>
+          fetch(`https://passion-point-server.vercel.app/groups/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <GroupDetails />
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/updateGroup/:id',
-        loader: ({params}) => fetch(`http://localhost:4000/updateGroup/${params.id}`),
-        element: <PrivateRoute>
-          <UpdateGroup></UpdateGroup>
-        </PrivateRoute>
-      }
-    ]
+        path: "/updateGroup/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://passion-point-server.vercel.app/updateGroup/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <UpdateGroup></UpdateGroup>
+          </PrivateRoute>
+        ),
+      },
+    ],
   },
   {
     path: "/auth",

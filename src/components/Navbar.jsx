@@ -6,13 +6,14 @@ import { MdLightMode } from "react-icons/md";
 import { FiMoon, FiSun } from "react-icons/fi";
 
 const Navbar = () => {
-  const { user, logOut,darkMode, setDarkMode } = useContext(AuthContext);
+  const { user, logOut, darkMode, setDarkMode } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   
 
+
   useEffect(() => {
     if(darkMode){
-      document.body.style.backgroundColor = "#1a1a1a";
+      document.body.style.backgroundColor = "#000";
       document.body.style.color = "white";
     }else{
       document.body.style.backgroundColor = "#fff";
@@ -139,7 +140,7 @@ const Navbar = () => {
           </div>
            {/* Dark Mode Toggle */}
         <div>
-          <button className="flex items-center text-2xl" onClick={()=> setDarkMode(!darkMode)}>
+          <button  className="flex items-center text-2xl" onClick={()=> setDarkMode(!darkMode)}>
             {
               darkMode ? '🌞'  :  '🌜 ' 
             }
