@@ -8,6 +8,39 @@ const AboutHobbyHub = () => {
     AOS.init({ duration: 1000 });
   }, []);
 
+  const categories = [
+    {
+      name: "Drawing & Painting",
+      description:
+        "Express your creativity through colors and strokes, bringing ideas to life on canvas.",
+    },
+    {
+      name: "Photography",
+      description:
+        "Capture moments and tell visual stories through the lens of your camera.",
+    },
+    {
+      name: "Video Gaming",
+      description:
+        "Immerse yourself in virtual worlds and challenge your skills in dynamic gameplay.",
+    },
+    {
+      name: "Fishing",
+      description:
+        "Relax by the water while honing patience and skill to catch the perfect fish.",
+    },
+    {
+      name: "Running",
+      description:
+        "Boost your endurance and clear your mind with every step, one mile at a time.",
+    },
+    {
+      name: "Reading",
+      description:
+        "Dive into worlds of imagination and knowledge through pages of inspiring books.",
+    },
+  ];
+
   return (
     <section className="my-16 px-4 py-12 bg-white text-center rounded-xl shadow-xl max-w-5xl mx-auto">
       <h2
@@ -45,22 +78,24 @@ const AboutHobbyHub = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 px-5 max-w-6xl" data-aos="fade-up" data-aos-delay="150">
-        <img
-          src="https://i.ibb.co/1G3pfGXY/kid-1241817-1280.jpg"
-          alt="People enjoying hobbies together"
-          className="w-full h-auto rounded-lg shadow-md"
-        />
-        <img
-          src="https://i.ibb.co/1G3pfGXY/kid-1241817-1280.jpg"
-          alt="People enjoying hobbies together"
-          className="w-full h-auto rounded-lg shadow-md"
-        />
-        <img
-          src="https://i.ibb.co/1G3pfGXY/kid-1241817-1280.jpg"
-          alt="People enjoying hobbies together"
-          className="w-full h-auto rounded-lg shadow-md"
-        />
+      <div className=" px-5 max-w-6xl" data-aos="fade-up" data-aos-delay="150">
+      <div className="container mx-auto px-4 py-8">
+      <h2 className="text-3xl font-bold text-teal-600 text-center mb-8">Hobby Categories</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {categories.map((cat) => (
+          <div
+            key={cat.name}
+            className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6 border border-teal-600"
+          >
+            <h3 className="text-xl font-semibold mb-3 text-teal-600">
+              {cat.name}
+            </h3>
+            <p className="text-gray-600 flex-1">{cat.description}</p>
+            {/* Optional: Add an icon or image here */}
+          </div>
+        ))}
+      </div>
+    </div>
       </div>
     </section>
   );

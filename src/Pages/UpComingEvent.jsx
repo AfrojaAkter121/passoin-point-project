@@ -2,10 +2,12 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import { PiArrowUpRight } from "react-icons/pi";
 import { Link } from "react-router";
+import noDataAnimation from '../../public/no-active.json'
+import Lottie from 'lottie-react';
 import { motion } from "framer-motion";
 
 const UpComingEvent = ({ upcomingEvents }) => {
-  console.log(upcomingEvents);
+
   return (
     <div>
       <h2 className="text-3xl font-bold text-teal-700 mb-2 text-center">Upcoming Events</h2>
@@ -14,6 +16,18 @@ const UpComingEvent = ({ upcomingEvents }) => {
         workshops, meet like-minded people, and explore your passions—don't miss
         out on the fun.
       </p>
+      {
+        upcomingEvents.length === 0 && (
+          <div className="w-ful flex flex-col items-center justify-center min-h-[70vh] text-center">
+                <Lottie
+                  animationData={noDataAnimation}
+                  loop={true}
+                  className="w-80 h-80"
+                />
+                <p className="text-green-700 text-lg mt-4"> No upComing Event Group</p>
+              </div>
+        )
+      }
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 py-10 p-5">
         {upcomingEvents.map((event) => (
           <motion.div className="bg-teal-800 rounded-lg
