@@ -13,7 +13,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if(darkMode){
-      document.body.style.backgroundColor = "#000";
+      document.body.style.backgroundColor = "#121212 ";
       document.body.style.color = "white";
     }else{
       document.body.style.backgroundColor = "#fff";

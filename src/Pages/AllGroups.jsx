@@ -29,7 +29,7 @@ const AllGroups = () => {
             }
       <div className='p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
         {
-            groups.map((group => <GroupCard key={group._id} group={group}></GroupCard>))
+            groups.map(((group, index) => <GroupCard key={group._id} index={index} group={group}></GroupCard>))
         }
     </div>
     </div>

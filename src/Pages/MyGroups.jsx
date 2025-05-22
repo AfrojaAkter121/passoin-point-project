@@ -117,7 +117,7 @@ const MyGroups = () => {
                   >
                     <td>
                       <img
-                        className="w-40 h-40 p-5 rounded-full"
+                        className="w-40 h-40 p-5 object-cover rounded-full"
                         src={group.imageUrl}
                         alt=""
                       />

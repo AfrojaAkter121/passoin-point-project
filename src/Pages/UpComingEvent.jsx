@@ -11,7 +11,7 @@ const UpComingEvent = ({ upcomingEvents }) => {
   return (
     <div>
       <h2 className="text-3xl font-bold text-teal-700 mb-2 text-center">Upcoming Events</h2>
-      <p className="text-gray-600 max-w-xl text-center mx-auto">
+      <p className=" max-w-xl text-center mx-auto">
         Discover exciting hobby group events happening this week! Join
         workshops, meet like-minded people, and explore your passions—don't miss
         out on the fun.

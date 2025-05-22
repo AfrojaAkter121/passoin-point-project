@@ -3,22 +3,22 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 
-const GroupCard = ({ group }) => {
+const GroupCard = ({ group, index }) => {
   return (
     <motion.div
-      className="p-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+    className="cursor-pointer rounded-lg"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.5 }}
+    transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.1 }}
     >
-      <div className="w-80 h-[460px] bg-white border border-gray-300 rounded-lg shadow-md flex flex-col items-center justify-start relative overflow-hidden font-sans transition-transform duration-300 hover:scale-105 border-2 border-teal-800">
+      <div className="w-80 h-[500px] bg-white border border-gray-300 rounded-lg shadow-md flex flex-col items-center justify-start relative overflow-hidden font-sans transition-transform duration-300 hover:scale-105 border-2 border-teal-800">
         {/* Top red bars */}
         <div className="absolute top-0 left-0 w-full px-3 pt-3">
           <div className="bg-teal-800 text-white text-sm font-bold px-4 py-2 w-fit rounded-full">
             {group.category}
           </div>
-          <div className="bg-teal-800 h-4 mt-3 w-[70%] h-[20px] rounded-full"></div>
+          <div className="bg-teal-800 h-4 mt-3 w-[70%] rounded-full"></div>
         </div>
 
         {/* Group Image */}
@@ -26,7 +26,7 @@ const GroupCard = ({ group }) => {
           <img
             src={group.imageUrl}
             alt={group.groupName}
-            className="w-24 h-24 rounded-full object-cover"
+            className="w-34 h-34 rounded-full object-cover"
           />
         </div>
 
