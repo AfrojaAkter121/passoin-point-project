@@ -119,7 +119,7 @@ const Navbar = () => {
                   alt="Profile"
                   className="w-12 h-12 rounded-full mr-5 cursor-pointer object-cover"
                 />
-                <div className="absolute top-12 left-0 bg-gray-100 p-2 rounded shadow hidden group-hover:block">
+                <div className={`absolute top-12 left-0 ${!darkMode ? "bg-gray-100" : "text-black bg-white"}  p-2 rounded shadow hidden group-hover:block`}>
                   {user.displayName}
                 </div>
                 <button
@@ -184,26 +184,41 @@ const Navbar = () => {
           {links}
 
           <div className="flex flex-col gap-2">
-            <img
-              //    src={user.photoURL}
-              alt="Profile"
-              className="w-10 h-10 rounded-full object-cover"
-            />
-            {/* <p>{user.displayName}</p> */}
-            <button
+           
+            {
+              user ? (
+                <div className="flex">
+                   <div className="flex">
+                <img
+                   src={user.photoURL}
+                  alt="Profile"
+                  className="w-12 h-12 rounded-full mr-5 cursor-pointer object-cover"
+                />
+                <div className="absolute top-12 left-0 bg-gray-100 p-2 rounded shadow hidden group-hover:block">
+                  {user.displayName}
+                </div>
+                </div>
+                <button
               onClick={() => (handleLogout(), setIsOpen(false))}
               className="bg-gradient-to-r from-[#262727] to-[#1ad3bd] font-semibold shadow-xl text-white px-6 py-2 rounded-full"
             >
               Logout
             </button>
-          </div>
-
-          <Link
-            to="/auth/login"
+                </div>
+                 
+              ) : (
+                <Link
+            to="/auth/signin"
             className="bg-gradient-to-r from-[#262727] to-[#1ad3bd] font-semibold shadow-xl text-white px-6 py-2 rounded-full"
           >
             Login
           </Link>
+              )
+            }
+            
+          </div>
+
+          
         </div>
       )}
     </nav>

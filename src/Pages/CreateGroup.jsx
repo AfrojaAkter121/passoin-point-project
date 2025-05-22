@@ -37,13 +37,13 @@ const CreateGroup = () => {
   };
 
   return (
-    <div className="flex w-full min-h-[800px] py-10  ">
+    <div className="flex flex-col md:flex-row w-full min-h-[800px] my-10  border-4 border-teal-700 rounded-2xl">
       <Helmet>
         <title>Create Groups _ PassionPoint</title>
       </Helmet>
       {/* Left Image Section */}
       <div
-        className="w-1/2  min-h-[800px] rounded-l-xl bg-cover bg-center border-t-4 border-l-4 border-b-4 border-teal-700"
+        className="w-full md:w-1/2  min-h-[800px] bg-cover bg-center "
         style={{
           backgroundImage:
             "url('https://i.ibb.co/qM8wp7SK/bmx-5142643-1280.jpg')",
@@ -53,7 +53,7 @@ const CreateGroup = () => {
       {/* Right Form Section */}
       <form
         onSubmit={handleSubmit}
-        className="w-1/2 p-12 bg-white rounded-r-xl flex flex-col justify-center border-t-4 border-r-4 border-b-4 border-teal-700"
+        className="w-full md:w-1/2 p-12 bg-white flex flex-col justify-center"
       >
         <h2 className="text-2xl text-teal-700 font-semibold font-bold mb-4">
           Create a New Hobby Group
@@ -63,7 +63,7 @@ const CreateGroup = () => {
           <label className="text-sm font-semibold text-teal-800">
             Group Name And Category
           </label>
-          <div className="grid grid-cols-2 gap-4 mt-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             <input
               name="groupName"
               placeholder="Group Name"
@@ -122,7 +122,7 @@ const CreateGroup = () => {
           <label className="text-sm font-semibold text-teal-800">
             Locaion & Max Member & Date
           </label>
-          <div className="grid grid-cols-3 gap-4 mt-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
             <input
               name="meetingLocation"
               placeholder="Meeting Location"
@@ -150,7 +150,7 @@ const CreateGroup = () => {
           <label className="text-sm font-semibold text-teal-800">
             User Name and Email
           </label>
-          <div className="grid grid-cols-2 gap-4 mt-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             <input
               name="userName"
               defaultValue={user.displayName}

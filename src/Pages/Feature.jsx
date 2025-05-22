@@ -30,7 +30,7 @@ const Feature = ({ group }) => {
             </div>
 
             <div className="flex-1">
-              <h1 className="text-2xl md:text-3xl font-bold">
+              <h1 className="text-2xl text-black md:text-white md:text-3xl font-bold">
                 {group.groupName}
               </h1>
               <p className="text-gray-300 mb-4">⭐⭐⭐⭐</p>

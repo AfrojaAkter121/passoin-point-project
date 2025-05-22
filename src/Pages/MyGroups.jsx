@@ -101,57 +101,95 @@ const MyGroups = () => {
             </div>
           </div>
         </div>
-
         {myGroups.length > 0 && (
-          <div className="overflow-x-auto rounded-xl mt-14">
-            <table className="min-w-full table-auto bg-white text-[#ac2d6d] border-2 border-[#ac2d6d] rounded-xl shadow-xl">
-              <thead className="bg-gradient-to-r from-[#ac2d6d] to-[#d84d3a] text-white text-gray-800 rounded-xl ">
-                <tr>
-                  <th className="p-3 text-left">Photo</th>
-                  <th className="p-3 text-left">Group Information</th>
+  <div className="mt-14">
+    {/* Large screen table */}
+    <div className="hidden md:block overflow-x-auto">
+      <table className="min-w-full table-auto bg-white text-[#ac2d6d] border-2 border-[#ac2d6d] rounded-xl shadow-xl">
+        <thead className="bg-gradient-to-r from-[#ac2d6d] to-[#d84d3a] text-white">
+          <tr>
+            <th className="p-3 text-left">Photo</th>
+            <th className="p-3 text-left">Group Information</th>
+            <th className="p-3 text-center">Update & Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {myGroups.map((group) => (
+            <tr
+              key={group._id}
+              className="text-center hover:bg-[#8d3661] hover:text-white transition"
+            >
+              <td className="p-4">
+                <img
+                  className="w-48 h-32 object-cover rounded-2xl mx-auto"
+                  src={group.imageUrl}
+                  alt="group"
+                />
+              </td>
+              <td className="p-3 text-left">
+                <ul className="space-y-1">
+                  <li className="font-semibold">{group.groupName}</li>
+                  <li>{group.category}</li>
+                  <li>Max Members: {group.maxMembers}</li>
+                  <li>Start Date: {group.startDate}</li>
+                </ul>
+              </td>
+              <td className="p-3 space-x-4 flex justify-center items-center">
+                <Link to={`/updateGroup/${group._id}`}>
+                  <button className="bg-gradient-to-r from-[#2dacac] to-[#04767a] text-white p-3 rounded-full">
+                    <BiSolidEdit size={25} />
+                  </button>
+                </Link>
+                <button
+                  onClick={() => handleDelete(group._id)}
+                  className="bg-gradient-to-r from-[#ac2d6d] to-[#d84d3a] text-white p-3 rounded-full"
+                >
+                  <MdAutoDelete size={25} />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
 
-                  <th className="p-3 ">Update and Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {myGroups.map((group) => (
-                  <tr
-                    key={group._id}
-                    className="text-center hover:bg-[#8d3661] hover:text-white"
-                  >
-                    <td className="p-4">
-                      <img
-                        className="w-60 h-40 object-cover rounded-2xl"
-                        src={group.imageUrl}
-                        alt=""
-                      />
-                    </td>
-                    <td className="p-3 text-left">
-                      <li>{group.groupName}</li>
-                      <li>{group.category}</li>
-                      <li>maxMembers : {group.maxMembers}</li>
-                      <li>{group.startDate}</li>
-                    </td>
-
-                    <td className="p-3 space-x-4">
-                      <button className="bg-gradient-to-r from-[#2dacac] to-[#04767a] text-white p-3 rounded-full">
-                        <Link to={`/updateGroup/${group._id}`}>
-                          <BiSolidEdit size={25} />
-                        </Link>
-                      </button>
-                      <button
-                        onClick={() => handleDelete(group._id)}
-                        className="bg-gradient-to-r from-[#ac2d6d] to-[#d84d3a] text-white p-3 rounded-full text-center"
-                      >
-                        <MdAutoDelete size={25} />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+    {/* Small screen stacked cards */}
+    <div className="md:hidden space-y-6">
+      {myGroups.map((group) => (
+        <div
+          key={group._id}
+          className="bg-white text-[#ac2d6d] shadow-xl border-2 border-[#ac2d6d] rounded-xl p-4"
+        >
+          <img
+            src={group.imageUrl}
+            alt="group"
+            className="w-full h-40 object-cover rounded-xl mb-4"
+          />
+          <ul className="space-y-1 mb-4">
+            <li className="font-bold text-lg">{group.groupName}</li>
+            <li>{group.category}</li>
+            <li>Max Members: {group.maxMembers}</li>
+            <li>Start Date: {group.startDate}</li>
+          </ul>
+          <div className="flex justify-center gap-4">
+            <Link to={`/updateGroup/${group._id}`}>
+              <button className="bg-gradient-to-r from-[#2dacac] to-[#04767a] text-white p-3 rounded-full">
+                <BiSolidEdit size={25} />
+              </button>
+            </Link>
+            <button
+              onClick={() => handleDelete(group._id)}
+              className="bg-gradient-to-r from-[#ac2d6d] to-[#d84d3a] text-white p-3 rounded-full"
+            >
+              <MdAutoDelete size={25} />
+            </button>
           </div>
-        )}
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
       </div>
     </div>
   );

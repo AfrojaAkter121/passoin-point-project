@@ -37,14 +37,14 @@ const UpdateGroup = () => {
   };
 
   return (
-    <div className="flex w-full min-h-[800px] py-10  ">
+    <div className="flex flex-col md:flex-row w-full min-h-[800px] rounded-xl border-4 border-teal-700 my-10">
       <Helmet>
         <title>Update Your Group _ PassionPoint</title>
       </Helmet>
       {/* Right Form Section */}
       <form
         onSubmit={handleUpdate}
-        className="w-1/2 p-12 bg-white rounded-l-xl flex flex-col justify-center border-t-4 border-l-4 border-b-4 border-teal-700"
+        className="w-full md:w-1/2 p-12 bg-white flex flex-col justify-center"
       >
         <h2 className="text-2xl text-teal-700 font-semibold font-bold mb-4">
           Update Your Hobby Group
@@ -54,7 +54,7 @@ const UpdateGroup = () => {
           <label className="text-sm font-semibold text-teal-800">
             Group Name And Category
           </label>
-          <div className="grid grid-cols-2 gap-4 mt-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             <input
               name="groupName"
               placeholder="Group Name"
@@ -116,7 +116,7 @@ const UpdateGroup = () => {
           <label className="text-sm font-semibold text-teal-800">
             Locaion & Max Member & Date
           </label>
-          <div className="grid grid-cols-3 gap-4 mt-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
             <input
               name="meetingLocation"
               defaultValue={group.meetingLocation}
@@ -147,7 +147,7 @@ const UpdateGroup = () => {
           <label className="text-sm font-semibold text-teal-800">
             User Name and Email
           </label>
-          <div className="grid grid-cols-2 gap-4 mt-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             <input
               name="userName"
               defaultValue={user.displayName}
@@ -195,7 +195,7 @@ const UpdateGroup = () => {
 
       {/* Left Image Section */}
       <div
-        className="w-1/2  min-h-[800px] rounded-r-xl bg-cover bg-center border-t-4 border-r-4 border-b-4 border-teal-700"
+        className="w-full md:w-1/2  min-h-[800px]  bg-cover bg-center "
         style={{
           backgroundImage: `url(${group.imageUrl})`,
         }}
