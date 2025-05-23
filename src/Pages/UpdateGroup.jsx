@@ -2,8 +2,9 @@ import React, { use } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import Swal from "sweetalert2";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
+
 
 const UpdateGroup = () => {
   const { user } = use(AuthContext);

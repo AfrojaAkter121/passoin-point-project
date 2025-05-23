@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router";
 import { Bounce, toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 const GroupDetails = () => {
   const group = useLoaderData();
+  const [join, setJoin] = useState(false)
 
   const handleJoin = () => {
     toast.info("🤝 Welcome to the group!", {
@@ -18,10 +20,15 @@ const GroupDetails = () => {
         theme: "light",
         transition: Bounce,
         });
+        setJoin(true)
   }
 
   return (
-    <div className="flex w-full min-h-screen items-center justify-center p-6">
+    <motion.div
+    initial={{ opacity: 0, y: 40, scale: 0.8 }}
+    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+    viewport={{ once: true, amount: 0 }}
+    transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }} className="flex w-full min-h-screen items-center justify-center p-6">
       <Helmet>
         <title>Group Details _ PassionPoint</title>
       </Helmet>
@@ -63,7 +70,9 @@ const GroupDetails = () => {
             </div>
 
             {new Date(group.startDate).setHours(0, 0, 0, 0) >= new Date().setHours(0, 0, 0, 0) ? (
-              <button onClick={handleJoin} className="flex items-center gap-2 bg-teal-600 hover:bg-[#042f3d] text-white rounded-full px-6 py-3 transition-all duration-300">
+
+                !join ? (
+                  <button onClick={handleJoin} className="flex items-center gap-2 bg-teal-600 hover:bg-[#042f3d] text-white rounded-full px-6 py-3 transition-all duration-300">
                 <svg
                   className="w-5 h-5"
                   fill="none"
@@ -75,6 +84,11 @@ const GroupDetails = () => {
                 </svg>
                 Join Group
               </button>
+                ) : (
+                  <button className="flex items-center gap-2 bg-teal-600 hover:bg-[#042f3d] text-white rounded-full px-6 py-3 transition-all duration-300" onClick={()=> setJoin(false)}>Cancel</button>
+                )
+              
+              
             ) : (
               <p className="mt-4 px-4 py-2 bg-red-100 text-red-600 rounded-md inline-block">
                 This group is no longer active.
@@ -107,7 +121,7 @@ const GroupDetails = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

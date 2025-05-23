@@ -9,6 +9,8 @@ import { Helmet } from 'react-helmet-async';
 const AllGroups = () => {
   const groups = useLoaderData();
 
+  const sortGroupe = groups.sort((a, b) => new Date(b.startDate) - new Date(a.startDate))
+
   return (
     <div className='px-4 py-10'>
       <Helmet>
@@ -41,7 +43,7 @@ const AllGroups = () => {
       {/* Groups Grid */}
       {groups.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {groups.map((group, index) => (
+          {sortGroupe.map((group, index) => (
             <GroupCard key={group._id} index={index} group={group} />
           ))}
         </div>

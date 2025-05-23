@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myGroups",
-        element: (
+        Component:()=> (
           <PrivateRoute>
             <MyGroups />
           </PrivateRoute>
@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/createGroup",
-        element: (
+        Component:()=> (
           <PrivateRoute>
             <CreateGroup />
           </PrivateRoute>
@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
       {
         path: "/allGroups",
         loader: () => fetch("https://passion-point-server.vercel.app/groups"),
-        element: (
+        Component:()=> (
           <PrivateRoute>
             <AllGroups />
           </PrivateRoute>
@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
         path: "/groups/:id",
         loader: ({ params }) =>
           fetch(`https://passion-point-server.vercel.app/groups/${params.id}`),
-        element: (
+        Component:()=> (
           <PrivateRoute>
             <GroupDetails />
           </PrivateRoute>
@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
           fetch(
             `https://passion-point-server.vercel.app/updateGroup/${params.id}`
           ),
-        element: (
+          Component:()=> (
           <PrivateRoute>
             <UpdateGroup></UpdateGroup>
           </PrivateRoute>
