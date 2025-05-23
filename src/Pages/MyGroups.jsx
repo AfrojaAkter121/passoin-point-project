@@ -50,7 +50,7 @@ const MyGroups = () => {
     });
   };
 
-  console.log(myGroups);
+
   return (
     <div className="p-6 md:p-10 min-h-screen">
       <Helmet>

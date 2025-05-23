@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import { Bounce, toast } from "react-toastify";
 import { MdLightMode } from "react-icons/md";
@@ -8,7 +8,9 @@ import { FiMoon, FiSun } from "react-icons/fi";
 const Navbar = () => {
   const { user, logOut, darkMode, setDarkMode } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-  
+  const location = useLocation()
+  const isLoginPage = location.pathname.startsWith('/auth/signin')
+  const isRegister = location.pathname.startsWith('/auth/signup')
 
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const Navbar = () => {
           transition: Bounce,
           });
       }).catch(err => {
-        console.log(err)
+        toast.error(err.message)
       })
   };
   const links = (
@@ -45,8 +47,8 @@ const Navbar = () => {
         to="/"
         className={({ isActive }) =>
           isActive
-            ? "border-b-2 text-white text-center bg-teal-600 w-30 h-8 font-semibold rounded-lg"
-            : "text-teal-600 font-semibold"
+            ? `border-b-2 text-center text-white bg-teal-600 w-30 h-8 font-semibold rounded-lg`
+            : ` ${isLoginPage || isRegister ? 'text-white' : ' text-teal-600'} font-semibold`
         }
       >
         Home
@@ -55,8 +57,8 @@ const Navbar = () => {
         to="/myGroups"
         className={({ isActive }) =>
           isActive
-            ? "border-b-2 text-white text-center bg-teal-600 w-30 h-8 font-semibold rounded-lg"
-            : "text-teal-600 font-semibold"
+            ? `border-b-2 text-center text-white bg-teal-600 w-30 h-8 font-semibold rounded-lg`
+            : ` ${isLoginPage || isRegister ? 'text-white' : ' text-teal-600'} font-semibold`
         }
       >
         My Groups
@@ -66,8 +68,8 @@ const Navbar = () => {
         onClick={() => setIsOpen(false)}
         className={({ isActive }) =>
           isActive
-            ? "border-b-2 text-white text-center bg-teal-600 w-30 h-8 font-semibold rounded-lg"
-            : "text-teal-600 font-semibold"
+            ? `border-b-2 text-center text-white bg-teal-600 w-30 h-8 font-semibold rounded-lg`
+            : ` ${isLoginPage || isRegister ? 'text-white' : ' text-teal-600'} font-semibold`
         }
       >
         Create Group
@@ -77,8 +79,8 @@ const Navbar = () => {
         onClick={() => setIsOpen(false)}
         className={({ isActive }) =>
           isActive
-            ? "border-b-2 text-white text-center bg-teal-600 w-30 h-8 font-semibold rounded-lg"
-            : "text-teal-600 font-semibold"
+            ? `border-b-2 text-center text-white bg-teal-600 w-30 h-8 font-semibold rounded-lg`
+            : ` ${isLoginPage || isRegister ? 'text-white' : ' text-teal-600'} font-semibold`
         }
       >
         All Group
@@ -93,13 +95,13 @@ const Navbar = () => {
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         {/* Left: Logo */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 ">
           <img
             src="https://i.ibb.co/4w7F3s7L/gradient-hub-logo-design-23-2149872182.jpg"
             alt="Logo"
-            className="w-10 h-10 rounded-full object-cover"
+            className="w-10 h-10 rounded-full object-cover border-2 border-white"
           />
-          <h1 className={`text-2xl font-semibold bg-gradient-to-r from-[#7d8885] to-[#0ea899] bg-clip-text text-transparent`}>
+          <h1 className={`text-2xl font-semibold ${isLoginPage || isRegister ? 'bg-gradient-to-r from-[#e0e9e6] to-[#61dacd] bg-clip-text': 'bg-gradient-to-r from-[#7d8885] to-[#0ea899] bg-clip-text'} bg-gradient-to-r from-[#7d8885] to-[#0ea899] bg-clip-text text-transparent`}>
             PassionPoint
           </h1>
         </div>
@@ -138,6 +140,7 @@ const Navbar = () => {
               </Link>
             )}
           </div>
+
            {/* Dark Mode Toggle */}
         <div>
           <button  className="flex items-center text-2xl" onClick={()=> setDarkMode(!darkMode)}>

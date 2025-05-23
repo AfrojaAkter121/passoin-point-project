@@ -8,6 +8,7 @@ import { auth } from "../utils/firebase.config";
 import { Bounce, toast, } from "react-toastify";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 
 const Register = () => {
   const {createUser, setUser} = use(AuthContext)
@@ -20,7 +21,6 @@ const Register = () => {
     const photo = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(name, photo, email, password);
 
      // Validation Rules
      if (password.length < 6) {
@@ -47,7 +47,6 @@ const Register = () => {
     createUser(email, password)
     .then((result) => {
       const user = result.user;
-      console.log(user);
       updateProfile(auth.currentUser , {
         displayName:name,
         photoURL:photo
@@ -99,13 +98,17 @@ const Register = () => {
       className="flex justify-center items-center min-h-screen py-16 bg-center bg-cover bg-no-repeat bg-blend-overlay "
       style={{
         backgroundImage:
-          "url('https://i.ibb.co/ymyTfLHx/gustavo-zambelli-JMK4lyhn-GM-unsplash.jpg')",
+          "url('https://i.ibb.co/Df2yygdr/cat-9401282-1920.jpg')",
       }}
     >
       <Helmet>
         <title>Register _ PassionPoint</title>
       </Helmet>
-      <form onSubmit={handleSubmit} className="flex text-white bg-gradient-to-r from-[#1ad3bd] via-gray-800 to-gray-900 backdrop-blur-lg bg-white/20  border border-white/40 shadow-xl rounded-2xl flex-col gap-4 py-10 px-8 w-lg ">
+      <motion.form
+      initial={{ opacity: 0, y: 40, scale: 0.8 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0 }}
+      transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }} onSubmit={handleSubmit} className="flex text-white bg-gradient-to-r from-[#1ad3bd] via-gray-800 to-gray-900 backdrop-blur-lg bg-white/20  border border-white/40 shadow-xl rounded-2xl flex-col gap-4 py-10 px-8 w-lg ">
         <h1 className="text-3xl">Register Your Account</h1>
 
         <input
@@ -168,7 +171,7 @@ const Register = () => {
             Sign in
           </Link>
         </p>
-      </form>
+      </motion.form>
     </div>
   );
 };

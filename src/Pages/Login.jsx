@@ -8,6 +8,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { signInWithPopup } from 'firebase/auth';
 import { auth } from '../utils/firebase.config';
 import { Helmet } from 'react-helmet-async';
+import { motion } from "framer-motion";
 
 const Login = () => {
   const {loginUser} = use(AuthContext)
@@ -19,12 +20,10 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
 
     loginUser(email, password)
     .then((result) => {
       const user = result.user;
-      console.log(user);
       navigate(`${location.state ? location.state: '/'}`);
       Swal.fire({
         title: "Login Success!",
@@ -71,13 +70,18 @@ const Login = () => {
       className="flex justify-center items-center min-h-screen py-16 bg-center bg-cover bg-no-repeat bg-blend-overlay "
       style={{
         backgroundImage:
-          "url('https://i.ibb.co/ymyTfLHx/gustavo-zambelli-JMK4lyhn-GM-unsplash.jpg)",
+          "url('https://i.ibb.co/Df2yygdr/cat-9401282-1920.jpg')",
       }}
     >
       <Helmet>
         <title>Log In _ PassionPoint</title>
       </Helmet>
-      <form onSubmit={handleSubmit} className="flex text-white bg-gradient-to-r from-[#1ad3bd] via-gray-800 to-gray-900 backdrop-blur-lg bg-white/20  border border-white/40 shadow-xl rounded-2xl flex-col gap-4 py-10 px-8 w-lg ">
+      <motion.form
+      initial={{ opacity: 0, y: 40, scale: 0.8 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0 }}
+      transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
+       onSubmit={handleSubmit} className="flex text-white bg-gradient-to-r from-[#1ad3bd] via-gray-800 to-gray-900 backdrop-blur-lg bg-white/20  border border-white/40 shadow-xl rounded-2xl flex-col gap-4 py-10 px-8 w-lg ">
         <h1 className="text-3xl mb-4">Login Your Account</h1>
         <input
           className="bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 rounded px-4 py-2 focus:outline-none"
@@ -127,7 +131,7 @@ const Login = () => {
             Sign Up
           </Link>
         </p>
-      </form>
+      </motion.form>
 
     </div>
     );

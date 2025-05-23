@@ -14,7 +14,6 @@ const CreateGroup = () => {
     const form = e.target;
     const formData = new FormData(form);
     const formEntries = Object.fromEntries(formData.entries());
-    console.log(formEntries);
 
     // sent data to the server
     fetch("https://passion-point-server.vercel.app/groups", {
