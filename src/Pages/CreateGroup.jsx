@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthProvider";
 import { useNavigate } from "react-router";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 
 const CreateGroup = () => {
   const { user } = use(AuthContext);
@@ -37,7 +38,12 @@ const CreateGroup = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row w-full min-h-[800px] my-10  border-4 border-teal-700 rounded-2xl">
+    <motion.div
+    initial={{ opacity: 0, y: 40, scale: 0.8 }}
+    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+    viewport={{ once: true, amount: 0 }}
+    transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
+     className="flex flex-col md:flex-row w-full min-h-[800px] my-10  border-4 border-teal-700 rounded-2xl">
       <Helmet>
         <title>Create Groups _ PassionPoint</title>
       </Helmet>
@@ -194,7 +200,8 @@ const CreateGroup = () => {
           <div className="w-2 h-2 rounded-full bg-[#cc5e33]"></div>
         </div>
       </form>
-    </div>
+      
+    </motion.div>
   );
 };
 

@@ -121,7 +121,7 @@ const MyGroups = () => {
             >
               <td className="p-4">
                 <img
-                  className="w-48 h-32 object-cover rounded-2xl mx-auto"
+                  className="w-48 h-32 object-cover rounded-2xl"
                   src={group.imageUrl}
                   alt="group"
                 />
@@ -134,7 +134,8 @@ const MyGroups = () => {
                   <li>Start Date: {group.startDate}</li>
                 </ul>
               </td>
-              <td className="p-3 space-x-4 flex justify-center items-center">
+              <td >
+                <div className="space-x-4 flex justify-center items-center">
                 <Link to={`/updateGroup/${group._id}`}>
                   <button className="bg-gradient-to-r from-[#2dacac] to-[#04767a] text-white p-3 rounded-full">
                     <BiSolidEdit size={25} />
@@ -146,6 +147,7 @@ const MyGroups = () => {
                 >
                   <MdAutoDelete size={25} />
                 </button>
+                </div>
               </td>
             </tr>
           ))}

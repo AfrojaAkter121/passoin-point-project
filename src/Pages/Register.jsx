@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import { ProviderId, signInWithPopup, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase.config";
-import { Bounce, } from "react-toastify";
+import { Bounce, toast, } from "react-toastify";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 
@@ -25,15 +25,19 @@ const Register = () => {
      // Validation Rules
      if (password.length < 6) {
       setError("Password must be at least 6 characters long.");
+      toast.error('Password must be at least 6 characters long.')
       return;
     } else if (!/[a-z]/.test(password)) {
       setError("Password must contain at least one lowercase letter.");
+      toast.error('Password must contain at least one lowercase letter.')
       return;
     } else if (!/[A-Z]/.test(password)) {
       setError("Password must contain at least one uppercase letter.");
+      toast.error('Password must contain at least one uppercase letter.')
       return;
     } else if (!/[0-9]/.test(password)) {
       setError("Password must contain at least one number.");
+      toast.error('password must contain at least one number.')
       return;
     } else {
       setError(""); // Everything is valid

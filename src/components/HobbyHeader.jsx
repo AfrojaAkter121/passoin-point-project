@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import { AuthContext } from "../Context/AuthProvider";
-import { Fade } from "react-awesome-reveal";
+import { Slide } from "react-awesome-reveal";
 
 export default function HobbyHeader() {
   const { darkMode } = useContext(AuthContext);
@@ -29,7 +29,8 @@ export default function HobbyHeader() {
             />
           </span>
         </h1>
-       <Fade direction="up" triggerOnce={true} damping={0.2}>
+        <div className="">
+        <Slide direction="up" cascade damping={0.1} triggerOnce>
        <p className={`${!darkMode ? "text-gray-600" : "text-white"} mb-6`}>
           At HobbyHub, we believe that hobbies aren’t just pastimes—they’re
           gateways to discovery, creativity, and meaningful connections.
@@ -39,7 +40,8 @@ export default function HobbyHeader() {
           is the place to explore new interests, connect with like-minded
           individuals, and showcase your passion projects.
         </p>
-       </Fade>
+       </Slide>
+        </div>
         <div className="flex gap-4">
           <button className="bg-teal-700 hover:bg-teal-400 text-white px-6 py-2 rounded-md">
             Get Started

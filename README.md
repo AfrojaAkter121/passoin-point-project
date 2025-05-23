@@ -6,7 +6,7 @@
 
 ## Project Overview
 
-HobbyHub is a social platform where users can discover, join, and create local hobby-based groups such as book clubs, hiking crews, painting circles, and more. The platform encourages community building around shared interests and passions, making it easier to engage with like-minded people.
+PassionPoint is a social platform where users can discover, join, and create local hobby-based groups such as book clubs, hiking crews, painting circles, and more. The platform encourages community building around shared interests and passions, making it easier to engage with like-minded people.
 
 ---
 

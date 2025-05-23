@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 const GroupCard = ({ group }) => {
   return (
     <motion.div
-    className="cursor-pointer rounded-lg"
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.5 }}
-    transition={{ duration: 0.8, ease: "easeOut", delay: 0.25 }}
+      className="cursor-pointer rounded-lg"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
     >
       <div className="w-80 h-[500px] bg-white border border-gray-300 rounded-lg shadow-md flex flex-col items-center justify-start relative overflow-hidden font-sans transition-transform duration-300 hover:scale-105 border-2 border-teal-800">
         {/* Top red bars */}

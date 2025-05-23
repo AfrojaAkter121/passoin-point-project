@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 
 const UpdateGroup = () => {
   const { user } = use(AuthContext);
@@ -37,7 +38,11 @@ const UpdateGroup = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row w-full min-h-[800px] rounded-xl border-4 border-teal-700 my-10">
+    <motion.div
+    initial={{ opacity: 0, y: 40, scale: 0.8 }}
+    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+    viewport={{ once: true, amount: 0 }}
+    transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }} className="flex flex-col md:flex-row w-full min-h-[800px] rounded-xl border-4 border-teal-700 my-10">
       <Helmet>
         <title>Update Your Group _ PassionPoint</title>
       </Helmet>
@@ -200,7 +205,7 @@ const UpdateGroup = () => {
           backgroundImage: `url(${group.imageUrl})`,
         }}
       ></div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -7,10 +7,10 @@ const Feature = ({ group }) => {
   return (
     <motion.div
       className="cursor-pointer bg-white shadow-lg rounded-lg p-4"
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 1.3, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0 }}
+      transition={{ duration: 1, ease: "easeOut", delay: 0.25 }}
       whileHover={{ scale: 1.03, boxShadow: "0 10px 20px rgba(0,0,0,0.12)" }}
     >
       <Link
