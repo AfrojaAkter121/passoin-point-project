@@ -1,20 +1,15 @@
 import React, { useContext } from "react";
-import {
-  FaSwimmer,
-  FaBiking,
-  FaBasketballBall,
-  FaFutbol,
-} from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import { AuthContext } from "../Context/AuthProvider";
 import { Slide } from "react-awesome-reveal";
+import CustomSlider from "./CustomSlider";
 
 export default function HobbyHeader() {
   const { darkMode } = useContext(AuthContext);
   return (
     <section className="flex flex-col md:flex-row items-center justify-between px-6 py-10 md:py-20 max-w-7xl mx-auto">
       {/* Left text content */}
-      <div className="max-w-xl">
+      <div className="max-w-xl w-1/2">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           Your Gateway to <br />
           <span className="text-teal-600">
@@ -57,44 +52,7 @@ export default function HobbyHeader() {
       </div>
 
       {/* Right image collage */}
-      <div className="relative mt-12 md:mt-0 w-full md:w-1/2 flex justify-center items-center">
-        {/* Icons */}
-        <FaSwimmer
-          size={30}
-          className="absolute top-0 left-20 text-gray-400 text-xl"
-        />
-        <FaBasketballBall
-          size={30}
-          className="absolute top-0 right-10 text-gray-400 text-xl"
-        />
-        <FaFutbol
-          size={30}
-          className="absolute bottom-20 left-12 text-gray-400 text-xl"
-        />
-        <FaBiking
-          size={20}
-          className="absolute bottom-10 right-14 text-gray-400 text-xl"
-        />
-
-        {/* Images */}
-        <div className="relative w-[380px] h-[380px]">
-          <img
-            src="https://i.ibb.co/1G3pfGXY/kid-1241817-1280.jpg"
-            alt="Golf"
-            className="rounded-full border-4 border-white shadow-lg w-[220px] h-[220px] object-cover absolute top-0 left-1/2 -translate-x-1/2"
-          />
-          <img
-            src="https://i.ibb.co/CKmR0Hpy/photographer-407068-1280.jpg"
-            alt="Football"
-            className="rounded-full border-4 border-white shadow-lg w-[200px] h-[200px] object-cover absolute top-[100px] right-0"
-          />
-          <img
-            src="https://i.ibb.co/v6wD4s6j/read-1342499-1280.jpg"
-            alt="Cycling"
-            className="rounded-full border-4 border-white shadow-lg w-[180px] h-[180px] object-cover absolute bottom-0 left-10"
-          />
-        </div>
-      </div>
+      <CustomSlider></CustomSlider>
     </section>
   );
 }
