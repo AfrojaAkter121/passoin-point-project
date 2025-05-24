@@ -1,17 +1,17 @@
-import React, { use } from 'react';
-import { FaGithub } from 'react-icons/fa6';
-import { GrGoogle } from 'react-icons/gr';
-import { Link, useLocation, useNavigate } from 'react-router';
-import { AuthContext } from '../Context/AuthProvider';
-import Swal from 'sweetalert2';
-import { GoogleAuthProvider } from 'firebase/auth';
-import { signInWithPopup } from 'firebase/auth';
-import { auth } from '../utils/firebase.config';
-import { Helmet } from 'react-helmet-async';
+import React, { use } from "react";
+import { FaGithub } from "react-icons/fa6";
+import { GrGoogle } from "react-icons/gr";
+import { Link, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../Context/AuthProvider";
+import Swal from "sweetalert2";
+import { GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
+import { auth } from "../utils/firebase.config";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 
 const Login = () => {
-  const {loginUser} = use(AuthContext)
+  const { loginUser } = use(AuthContext);
   const provider = new GoogleAuthProvider();
   const location = useLocation();
   const navigate = useNavigate();
@@ -22,51 +22,48 @@ const Login = () => {
     const password = e.target.password.value;
 
     loginUser(email, password)
-    .then((result) => {
-      const user = result.user;
-      navigate(`${location.state ? location.state: '/'}`);
-      Swal.fire({
-        title: "Login Success!",
-        icon: "success",
-        draggable: true
+      .then(() => {
+        navigate(`${location.state ? location.state : "/"}`);
+        Swal.fire({
+          title: "Login Success!",
+          icon: "success",
+          draggable: true,
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+          footer: '<a href="#">Why do I have this issue?</a>',
+        });
       });
-    }).catch((err => {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: err.message,
-        footer: '<a href="#">Why do I have this issue?</a>'
-      });
-    }))
-  }
+  };
 
   // google sign in
 
   const handleGoogleSignIn = () => {
-
-
     signInWithPopup(auth, provider)
-    .then(() => {
-      Swal.fire({
-        title: "Google Login Success!",
-        icon: "success",
-        draggable: true
+      .then(() => {
+        Swal.fire({
+          title: "Google Login Success!",
+          icon: "success",
+          draggable: true,
+        });
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+          footer: '<a href="#">Why do I have this issue?</a>',
+        });
       });
-      navigate(`${location.state ? location.state: '/'}`);
-    }).catch(err => {
-      console.error("❌ Google Sign-In Error", err); 
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: err.message,
-        footer: '<a href="#">Why do I have this issue?</a>'
-      });
-    })
-  }
-  
+  };
 
-    return (
-        <div
+  return (
+    <div
       className="flex justify-center items-center min-h-screen py-16 bg-center bg-cover bg-no-repeat bg-blend-overlay "
       style={{
         backgroundImage:
@@ -77,11 +74,13 @@ const Login = () => {
         <title>Log In _ PassionPoint</title>
       </Helmet>
       <motion.form
-      initial={{ opacity: 0, y: 40, scale: 0.8 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0 }}
-      transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
-       onSubmit={handleSubmit} className="flex text-white bg-gradient-to-r from-[#1ad3bd] via-gray-800 to-gray-900 backdrop-blur-lg bg-white/20  border border-white/40 shadow-xl rounded-2xl flex-col gap-4 py-10 px-8 w-lg ">
+        initial={{ opacity: 0, y: 40, scale: 0.8 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
+        onSubmit={handleSubmit}
+        className="flex text-white bg-gradient-to-r from-[#1ad3bd] via-gray-800 to-gray-900 backdrop-blur-lg bg-white/20  border border-white/40 shadow-xl rounded-2xl flex-col gap-4 py-10 px-8 w-lg "
+      >
         <h1 className="text-3xl mb-4">Login Your Account</h1>
         <input
           className="bg-gradient-to-l from-[#68fced] via-gray-600 to-gray-900 rounded px-4 py-2 focus:outline-none"
@@ -95,15 +94,18 @@ const Login = () => {
           name="password"
           placeholder="Password"
         />
-        <a href='#' className="text-sm text-black underline">Forgot password</a>
+        <a href="#" className="text-sm text-black underline">
+          Forgot password
+        </a>
 
-        <button className="px-6 py-3 mt-8 rounded-full bg-gradient-to-r from-white via-white to-[#1ad3bd] text-black font-medium shadow-md hover:scale-105 transition-transform">
+        <button type="submit" className="px-6 py-3 mt-8 rounded-full bg-gradient-to-r from-white via-white to-[#1ad3bd] text-black font-medium shadow-md hover:scale-105 transition-transform">
           Log In
         </button>
 
         <h1 className="text-center text-xl"> Or</h1>
 
-        <button 
+        <button
+        type="button"
           className="flex items-center 
           justify-center gap-2 px-4 py-2
            bg-gradient-to-l from-[#68fced]
@@ -114,7 +116,8 @@ const Login = () => {
           Continue with Github
         </button>
         <button
-        onClick={handleGoogleSignIn}
+        type="button"
+          onClick={handleGoogleSignIn}
           className="flex items-center
            justify-center gap-2 px-4
             py-2 bg-gradient-to-l from-[#68fced]
@@ -127,14 +130,13 @@ const Login = () => {
 
         <p className="text-sm text-gray-900">
           Already have account?{" "}
-          <Link to='/auth/signup' className="text-pink-300 underline">
+          <Link to="/auth/signup" className="text-pink-300 underline">
             Sign Up
           </Link>
         </p>
       </motion.form>
-
     </div>
-    );
+  );
 };
 
 export default Login;

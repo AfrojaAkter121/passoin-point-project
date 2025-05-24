@@ -11,6 +11,7 @@ import { Helmet } from "react-helmet-async";
 const MyGroups = () => {
   const { user } = use(AuthContext);
   const [myGroups, setMyGroups] = useState([]);
+  
   useEffect(() => {
     if (user?.email) {
       fetch(

@@ -9,19 +9,6 @@ const AuthProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
     const [darkMode, setDarkMode] = useState(false);
 
-    useEffect(() => {
-        const fetchUserTheme = async () => {
-          if (user?.email) {
-            const res = await fetch(`/api/users/theme/${user.email}`);
-            const data = await res.json();
-      
-            const isDark = data.theme === "dark";
-            setDarkMode(isDark);
-          }
-        };
-      
-        fetchUserTheme();
-      }, [user, setDarkMode]);
 
     const createUser = (email, password) => {
         setLoading(true);

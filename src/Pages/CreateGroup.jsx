@@ -148,7 +148,7 @@ const CreateGroup = () => {
               required
             />
           </div>
-          <div></div>
+          
         </div>
 
         <div className="mb-6">

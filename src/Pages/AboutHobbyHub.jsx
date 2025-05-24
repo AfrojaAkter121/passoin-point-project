@@ -4,6 +4,7 @@ import AOS from "aos";
 import { useEffect } from "react";
 
 const AboutHobbyHub = () => {
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -91,7 +92,7 @@ const AboutHobbyHub = () => {
               {cat.name}
             </h3>
             <p className="text-gray-600 flex-1">{cat.description}</p>
-            {/* Optional: Add an icon or image here */}
+            
           </div>
         ))}
       </div>

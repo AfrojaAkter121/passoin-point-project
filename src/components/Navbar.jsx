@@ -43,6 +43,7 @@ const Navbar = () => {
   };
   const links = (
     <div className="flex flex-col md:flex-row gap-8 text-lg px-8 py-2">
+    
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -151,8 +152,10 @@ const Navbar = () => {
         </div>
 
         </div>
+
+
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className="block md:hidden">
           <button onClick={() => setIsOpen(!isOpen)}>
             <svg
               className="w-6 h-6"
@@ -191,7 +194,7 @@ const Navbar = () => {
             {
               user ? (
                 <div className="flex">
-                   <div className="flex">
+                   <div className="flex group">
                 <img
                    src={user.photoURL}
                   alt="Profile"
