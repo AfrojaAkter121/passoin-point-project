@@ -6,7 +6,7 @@ import { FaSwimmer, FaBasketballBall, FaFutbol, FaBiking } from "react-icons/fa"
 
 const CustomSlider = () => {
   return (
-    <div className="w-1/2 mx-auto mt-10">
+    <div className="w-1/2 mx-auto">
       <Splide
         options={{
           type: 'loop',
