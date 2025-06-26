@@ -11,6 +11,7 @@ import Home from "../Pages/Home";
 import GroupDetails from "../Pages/GroupDetails";
 import UpdateGroup from "../Pages/UpdateGroup";
 import ErrorPage from "../Pages/ErrorPage";
+import DashBoard from "../Dashboard/DashBoard";
 
 export const router = createBrowserRouter([
   {
@@ -22,9 +23,15 @@ export const router = createBrowserRouter([
         path: "/",
         loader: () => fetch("https://passion-point-server.vercel.app/groups"),
         Component: Home,
-      },
-      {
-        path: "/myGroups",
+      }
+    ],
+  },
+  {
+    path: '/dashboard',
+    Component: DashBoard,
+    children: [
+           {
+        path: "myGroups",
         Component:()=> (
           <PrivateRoute>
             <MyGroups />
@@ -32,10 +39,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "",
-      },
-      {
-        path: "/createGroup",
+        path: "createGroup",
         Component:()=> (
           <PrivateRoute>
             <CreateGroup />
@@ -43,7 +47,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/allGroups",
+        path: "allGroups",
         Component:()=> (
           <PrivateRoute>
             <AllGroups />
@@ -51,7 +55,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/groups/:id",
+        path: "groups/:id",
         loader: ({ params }) =>
           fetch(`https://passion-point-server.vercel.app/groups/${params.id}`),
         Component:()=>  
@@ -60,7 +64,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>),
       },
       {
-        path: "/updateGroup/:id",
+        path: "updateGroup/:id",
         loader: ({ params }) =>
           fetch(
             `https://passion-point-server.vercel.app/updateGroup/${params.id}`
@@ -71,7 +75,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-    ],
+    ]
   },
   {
     path: "/auth",

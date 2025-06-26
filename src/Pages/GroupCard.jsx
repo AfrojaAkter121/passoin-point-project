@@ -12,7 +12,7 @@ const GroupCard = ({ group }) => {
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
     >
-      <div className="w-80 h-[500px] bg-white border border-gray-300 rounded-lg shadow-md flex flex-col items-center justify-start relative overflow-hidden font-sans transition-transform duration-300 hover:scale-105 border-2 border-teal-800">
+      <div className="w-80 h-[450px] bg-white border border-gray-300 rounded-lg shadow-md flex flex-col items-center justify-start relative overflow-hidden font-sans transition-transform duration-300 hover:scale-105 border-2 border-teal-800">
         {/* Top red bars */}
         <div className="absolute top-0 left-0 w-full px-3 pt-3">
           <div className="bg-teal-800 text-white text-sm font-bold px-4 py-2 w-fit rounded-full">
@@ -26,7 +26,7 @@ const GroupCard = ({ group }) => {
           <img
             src={group.imageUrl}
             alt={group.groupName}
-            className="w-34 h-34 rounded-full object-cover"
+            className="w-24 h-24 rounded-full object-cover"
           />
         </div>
 
@@ -49,7 +49,7 @@ const GroupCard = ({ group }) => {
         <div className="absolute bottom-5 w-full px-3 pt-8 flex flex-col justify-end items-end">
           <div className="bg-teal-800 h-[20px] w-[70%] rounded-full mt-7 mb-3"></div>
           <Link
-            to={`/groups/${group._id}`}
+            to={`/dashboard/groups/${group._id}`}
             className="bg-teal-800 w-[50%] rounded-full text-white py-2 px-3  flex justify-center items-center gap-2"
           >
             See More <FaArrowRight></FaArrowRight>

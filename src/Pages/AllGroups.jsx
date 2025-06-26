@@ -76,7 +76,7 @@ const AllGroups = () => {
             Create a new group to get started and bring people together!
           </p>
           <Link
-            to="/createGroup"
+            to="/dashboard/createGroup"
             className="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-lg font-semibold transition"
           >
             Create New Group →

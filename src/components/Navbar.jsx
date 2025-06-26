@@ -10,24 +10,23 @@ import { HiOutlineSparkles } from "react-icons/hi";
 const Navbar = () => {
   const { user, logOut, darkMode, setDarkMode } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation()
-  const isLoginPage = location.pathname.startsWith('/auth/signin')
-  const isRegister = location.pathname.startsWith('/auth/signup')
-
+  const location = useLocation();
+  const isLoginPage = location.pathname.startsWith("/auth/signin");
+  const isRegister = location.pathname.startsWith("/auth/signup");
 
   useEffect(() => {
-    if(darkMode){
+    if (darkMode) {
       document.body.style.backgroundColor = "#121212 ";
       document.body.style.color = "white";
-    }else{
+    } else {
       document.body.style.backgroundColor = "#fff";
       document.body.style.color = "#000";
     }
-  },[darkMode])
-
+  }, [darkMode]);
 
   const handleLogout = () => {
-      logOut().then(() => {
+    logOut()
+      .then(() => {
         toast.success(`${user.displayName} Logout Success!`, {
           position: "bottom-right",
           autoClose: 5000,
@@ -38,75 +37,73 @@ const Navbar = () => {
           progress: undefined,
           theme: "dark",
           transition: Bounce,
-          });
-      }).catch(err => {
-        toast.error(err.message)
+        });
       })
+      .catch((err) => {
+        toast.error(err.message);
+      });
   };
   const links = (
     <div className="flex flex-col md:flex-row gap-8 text-lg px-8 py-2">
-    
       <NavLink
         to="/"
         className={({ isActive }) =>
           isActive
             ? `border-b-2 text-center text-white bg-teal-600 w-30 h-8 font-semibold rounded-lg`
-            : ` ${isLoginPage || isRegister ? 'text-white' : ' text-teal-600'} font-semibold`
+            : ` ${
+                isLoginPage || isRegister ? "text-white" : " text-teal-600"
+              } font-semibold`
         }
       >
         Home
       </NavLink>
-      <NavLink
-        to="/myGroups"
+      {
+        user &&  <NavLink
+        to="/dashboard"
         className={({ isActive }) =>
           isActive
             ? `border-b-2 text-center text-white bg-teal-600 w-30 h-8 font-semibold rounded-lg`
-            : ` ${isLoginPage || isRegister ? 'text-white' : ' text-teal-600'} font-semibold`
+            : ` ${
+                isLoginPage || isRegister ? "text-white" : " text-teal-600"
+              } font-semibold`
         }
       >
-        My Groups
+        DashBoard
       </NavLink>
-      <NavLink
-        to="/createGroup"
-        onClick={() => setIsOpen(false)}
-        className={({ isActive }) =>
-          isActive
-            ? `border-b-2 text-center text-white bg-teal-600 w-30 h-8 font-semibold rounded-lg`
-            : ` ${isLoginPage || isRegister ? 'text-white' : ' text-teal-600'} font-semibold`
-        }
-      >
-        Create Group
-      </NavLink>
-      <NavLink
-        to="/allGroups"
-        onClick={() => setIsOpen(false)}
-        className={({ isActive }) =>
-          isActive
-            ? `border-b-2 text-center text-white bg-teal-600 w-30 h-8 font-semibold rounded-lg`
-            : ` ${isLoginPage || isRegister ? 'text-white' : ' text-teal-600'} font-semibold`
-        }
-      >
-        All Group
-      </NavLink>
+      }
     </div>
   );
 
   return (
     <nav
-      className="px-4 py-3"
-     
+      className={`sticky top-0 z-50 py-3 backdrop-blur-md transition-all duration-300
+      ${
+        isLoginPage || isRegister
+          ? "bg-black"
+          : darkMode
+          ? "bg-[#121212]"
+          : "bg-white/80"
+      }
+      dark:bg-gray-900/80
+    `}
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex items-center gap-2 ">
-        <motion.div
-        initial={{ rotate: 0 }}
-        animate={{ rotate: [0, 15, -15, 0] }}
-        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-      >
-        <HiOutlineSparkles size={40} className="text-3xl text-teal-700" />
-      </motion.div>
-          <h1 className={`text-2xl font-semibold ${isLoginPage || isRegister ? 'bg-gradient-to-r from-[#e0e9e6] to-[#61dacd] bg-clip-text': 'bg-gradient-to-r from-[#7d8885] to-[#0ea899] bg-clip-text'} bg-gradient-to-r from-[#7d8885] to-[#0ea899] bg-clip-text text-transparent`}>
+          <motion.div
+            initial={{ rotate: 0 }}
+            animate={{ rotate: [0, 15, -15, 0] }}
+            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+          >
+            <HiOutlineSparkles size={40} className="text-3xl text-teal-700" />
+          </motion.div>
+          <h1
+            className={`text-2xl font-semibold ${
+              isLoginPage || isRegister
+                ? "bg-gradient-to-r from-[#e0e9e6] to-[#61dacd] bg-clip-text"
+                : "bg-gradient-to-r from-[#7d8885] to-[#0ea899] bg-clip-text"
+            } bg-gradient-to-r from-[#7d8885] to-[#0ea899] bg-clip-text text-transparent`}
+          >
             PassionPoint
           </h1>
         </div>
@@ -122,11 +119,15 @@ const Navbar = () => {
             {user ? (
               <div className="flex">
                 <img
-                   src={user.photoURL}
+                  src={user.photoURL}
                   alt="Profile"
                   className="w-12 h-12 rounded-full mr-5 cursor-pointer object-cover"
                 />
-                <div className={`absolute top-12 left-0 ${!darkMode ? "bg-gray-100" : "text-black bg-white"}  p-2 rounded shadow hidden group-hover:block`}>
+                <div
+                  className={`absolute top-12 left-0 ${
+                    !darkMode ? "bg-gray-100" : "text-black bg-white"
+                  }  p-2 rounded shadow hidden group-hover:block`}
+                >
                   {user.displayName}
                 </div>
                 <button
@@ -146,17 +147,16 @@ const Navbar = () => {
             )}
           </div>
 
-           {/* Dark Mode Toggle */}
-        <div>
-          <button  className="flex items-center text-2xl" onClick={()=> setDarkMode(!darkMode)}>
-            {
-              darkMode ? '🌞'  :  '🌜' 
-            }
-          </button>
+          {/* Dark Mode Toggle */}
+          <div>
+            <button
+              className="flex items-center text-2xl"
+              onClick={() => setDarkMode(!darkMode)}
+            >
+              {darkMode ? "🌞" : "🌜"}
+            </button>
+          </div>
         </div>
-
-        </div>
-
 
         {/* Mobile Menu Button */}
         <div className="block md:hidden">
@@ -194,41 +194,34 @@ const Navbar = () => {
           {links}
 
           <div className="flex flex-col gap-2">
-           
-            {
-              user ? (
-                <div className="flex">
-                   <div className="flex group">
-                <img
-                   src={user.photoURL}
-                  alt="Profile"
-                  className="w-12 h-12 rounded-full mr-5 cursor-pointer object-cover"
-                />
-                <div className="absolute top-12 left-0 bg-gray-100 p-2 rounded shadow hidden group-hover:block">
-                  {user.displayName}
-                </div>
+            {user ? (
+              <div className="flex">
+                <div className="flex group">
+                  <img
+                    src={user.photoURL}
+                    alt="Profile"
+                    className="w-12 h-12 rounded-full mr-5 cursor-pointer object-cover"
+                  />
+                  <div className="absolute top-12 left-0 bg-gray-100 p-2 rounded shadow hidden group-hover:block">
+                    {user.displayName}
+                  </div>
                 </div>
                 <button
-              onClick={() => (handleLogout(), setIsOpen(false))}
-              className="bg-gradient-to-r from-[#262727] to-[#1ad3bd] font-semibold shadow-xl text-white px-6 py-2 rounded-full"
-            >
-              Logout
-            </button>
-                </div>
-                 
-              ) : (
-                <Link
-            to="/auth/signin"
-            className="bg-gradient-to-r from-[#262727] to-[#1ad3bd] font-semibold shadow-xl text-white px-6 py-2 rounded-full"
-          >
-            Login
-          </Link>
-              )
-            }
-            
+                  onClick={() => (handleLogout(), setIsOpen(false))}
+                  className="bg-gradient-to-r from-[#262727] to-[#1ad3bd] font-semibold shadow-xl text-white px-6 py-2 rounded-full"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/auth/signin"
+                className="bg-gradient-to-r from-[#262727] to-[#1ad3bd] font-semibold shadow-xl text-white px-6 py-2 rounded-full"
+              >
+                Login
+              </Link>
+            )}
           </div>
-
-          
         </div>
       )}
     </nav>
