@@ -4,6 +4,8 @@ import { AuthContext } from "../Context/AuthProvider";
 import { Bounce, toast } from "react-toastify";
 import { MdLightMode } from "react-icons/md";
 import { FiMoon, FiSun } from "react-icons/fi";
+import { motion } from "framer-motion";
+import { HiOutlineSparkles } from "react-icons/hi";
 
 const Navbar = () => {
   const { user, logOut, darkMode, setDarkMode } = useContext(AuthContext);
@@ -97,11 +99,13 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex items-center gap-2 ">
-          <img
-            src="https://i.ibb.co/4w7F3s7L/gradient-hub-logo-design-23-2149872182.jpg"
-            alt="Logo"
-            className="w-10 h-10 rounded-full object-cover border-2 border-white"
-          />
+        <motion.div
+        initial={{ rotate: 0 }}
+        animate={{ rotate: [0, 15, -15, 0] }}
+        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+      >
+        <HiOutlineSparkles size={40} className="text-3xl text-teal-700" />
+      </motion.div>
           <h1 className={`text-2xl font-semibold ${isLoginPage || isRegister ? 'bg-gradient-to-r from-[#e0e9e6] to-[#61dacd] bg-clip-text': 'bg-gradient-to-r from-[#7d8885] to-[#0ea899] bg-clip-text'} bg-gradient-to-r from-[#7d8885] to-[#0ea899] bg-clip-text text-transparent`}>
             PassionPoint
           </h1>
@@ -146,7 +150,7 @@ const Navbar = () => {
         <div>
           <button  className="flex items-center text-2xl" onClick={()=> setDarkMode(!darkMode)}>
             {
-              darkMode ? '🌞sf'  :  '🌜sdfds ' 
+              darkMode ? '🌞'  :  '🌜' 
             }
           </button>
         </div>

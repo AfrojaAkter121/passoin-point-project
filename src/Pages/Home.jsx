@@ -5,6 +5,10 @@ import { useLoaderData } from "react-router";
 import UpComingEvent from "./UpComingEvent";
 import AboutHobbyHub from "./AboutHobbyHub";
 import { Helmet } from "react-helmet-async";
+import NewsletterSignup from "../components/NewsletterSignup";
+import UserTestimonials from "../components/UserTestimonials";
+import Leaderboard from "../components/Leaderboard";
+import CallToAction from "../components/CallToAction";
 
 const Home = () => {
   const groups = useLoaderData();
@@ -36,8 +40,12 @@ const Home = () => {
       </Helmet>
       <HobbyHeader></HobbyHeader>
       <FeaturedCard activeGroup={activeGroup}></FeaturedCard>
-      <AboutHobbyHub></AboutHobbyHub>
+      <CallToAction></CallToAction>
       <UpComingEvent upcomingEvents={upcomingEvents}></UpComingEvent>
+      <AboutHobbyHub></AboutHobbyHub>
+      <Leaderboard></Leaderboard>
+      <UserTestimonials></UserTestimonials>
+      <NewsletterSignup></NewsletterSignup>
     </div>
   );
 };

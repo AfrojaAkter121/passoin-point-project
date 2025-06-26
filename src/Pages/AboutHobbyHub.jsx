@@ -43,7 +43,7 @@ const AboutHobbyHub = () => {
   ];
 
   return (
-    <section className="my-16 px-4 py-12 bg-white text-center rounded-xl shadow-xl max-w-5xl mx-auto">
+    <section className="my-16 px-4 py-12 bg-teal-50 text-center rounded-xl shadow-xl max-w-6xl mx-auto">
       <h2
         className="text-4xl font-bold text-teal-700 mb-4"
         data-aos="fade-up"

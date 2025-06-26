@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 const UpComingEvent = ({ upcomingEvents }) => {
   return (
     <div>
-      <h2 className="text-3xl font-bold text-teal-700 mb-2 text-center">
+      <h2 className="text-3xl font-bold text-teal-700 mb-2 text-center my-14">
         Upcoming Events
       </h2>
       <p className=" max-w-xl text-center mx-auto">

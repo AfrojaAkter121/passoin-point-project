@@ -7,6 +7,10 @@ import { RouterProvider } from "react-router";
 import AuthProvider from "./Context/AuthProvider.jsx";
 import { ToastContainer } from "react-toastify";
 import { HelmetProvider } from "react-helmet-async";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
