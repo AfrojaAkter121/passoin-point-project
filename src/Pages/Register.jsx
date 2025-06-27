@@ -111,7 +111,7 @@ const Register = () => {
 
   return (
     <div
-      className="flex justify-center items-center min-h-screen py-16 bg-center bg-cover bg-no-repeat bg-blend-overlay "
+      className="flex justify-center items-center min-h-screen py-16 bg-center bg-cover bg-no-repeat bg-blend-overlay px-3 md:px-0"
       style={{
         backgroundImage:
           "url('https://i.ibb.co/Df2yygdr/cat-9401282-1920.jpg')",

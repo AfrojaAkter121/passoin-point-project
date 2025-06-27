@@ -14,7 +14,7 @@ const Feature = ({ group }) => {
       whileHover={{ scale: 1.03, boxShadow: "0 10px 20px rgba(0,0,0,0.12)" }}
     >
       <Link
-        to={`/groups/${group._id}`}
+        to={`/dashboard/groups/${group._id}`}
         className=" bg-teal-800 flex items-center justify-center  rounded-2xl"
       >
         <div className="bg-teal-800 text-white p-6 rounded-lg  w-full relative overflow-hidden">

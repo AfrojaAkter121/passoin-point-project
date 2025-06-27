@@ -1,4 +1,3 @@
-// CustomSlider.js
 import React from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
@@ -6,7 +5,7 @@ import { FaSwimmer, FaBasketballBall, FaFutbol, FaBiking } from "react-icons/fa"
 
 const CustomSlider = () => {
   return (
-    <div className="w-1/2 mx-auto">
+    <div className="w-full mx-auto">
       <Splide
         options={{
           type: 'loop',

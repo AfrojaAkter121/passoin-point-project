@@ -96,7 +96,7 @@ const UpComingEvent = () => {
                     $169.43
                   </span>
                   <Link
-                    to={`/groups/${event._id}`}
+                    to={`/dashboard/groups/${event._id}`}
                     className="bg-teal-800 text-white text-sm px-4 py-2 rounded-full flex items-center gap-1"
                   >
                     See more <PiArrowUpRight />
