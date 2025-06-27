@@ -1,4 +1,5 @@
 import { FaHome, FaInfoCircle, FaEnvelope, FaTachometerAlt, FaBell } from "react-icons/fa";
+import { Link } from "react-router";
 
 const DashboardTopBar = ({ user }) => {
   return (
@@ -6,9 +7,9 @@ const DashboardTopBar = ({ user }) => {
       
       {/* Left: Home, About, Contact Us icons */}
       <div className="flex items-center gap-6">
-        <button title="Home" className="text-teal-900 bg-teal-50 rounded-full p-3 text-lg">
+        <Link to='/' title="Home" className="text-teal-900 bg-teal-50 rounded-full p-3 text-lg">
           <FaHome />
-        </button>
+        </Link>
         <button title="About" className="text-teal-900 bg-teal-50 rounded-full p-3 text-lg">
           <FaInfoCircle />
         </button>

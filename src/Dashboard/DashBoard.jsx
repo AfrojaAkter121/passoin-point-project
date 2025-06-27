@@ -19,14 +19,12 @@ const DashBoard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const navItems = [
+    { to: "/dashboard/overview", label: "Overview", icon: <FaThList /> },
     { to: "/dashboard/myGroups", label: "My Groups", icon: <FaUsers /> },
-    {
-      to: "/dashboard/createGroup",
-      label: "Create Group",
-      icon: <FaPlusCircle />,
-    },
+    { to: "/dashboard/createGroup", label: "Create Group", icon: <FaPlusCircle /> },
     { to: "/dashboard/allGroups", label: "All Groups", icon: <FaThList /> },
   ];
+  
 
   const handleLogout = () => {
     logOut()
@@ -102,6 +100,7 @@ const DashBoard = () => {
                     <NavLink
                       key={i}
                       to={item.to}
+                      end={item.to === "/dashboard"}  // শুধু /dashboard রুটে end:true
                       onClick={() => setSidebarOpen(false)}
                       className={({ isActive }) =>
                         `flex items-center gap-3 px-4 py-2 rounded-lg transition hover:bg-white/20 ${

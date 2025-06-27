@@ -28,7 +28,7 @@ const AllGroups = () => {
       {/* ✅ Filters Layout */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-12">
         {/* 🔍 Search + Sort Combined Box */}
-        <div className="flex items-center bg-white shadow-2xl shadow-teal-900 rounded-full px-4 py-2 w-full md:w-auto">
+        <div className="flex items-center bg-white shadow shadow-teal-900 rounded-full px-4 py-2 w-full md:w-auto">
           <input
             type="text"
             placeholder="search bar"
@@ -69,7 +69,7 @@ const AllGroups = () => {
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="select rounded-full shadow-2xl shadow-teal-800 max-w-xs w-full md:w-auto "
+          className="select rounded-full shadow shadow-teal-800 max-w-xs w-full md:w-auto "
         >
           <option value="">Select Hobby Category</option>
           <option value="Drawing & Painting">Drawing & Painting</option>

@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import MainLayout from "../layout/MainLayout";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
@@ -12,6 +12,7 @@ import GroupDetails from "../Pages/GroupDetails";
 import UpdateGroup from "../Pages/UpdateGroup";
 import ErrorPage from "../Pages/ErrorPage";
 import DashBoard from "../Dashboard/DashBoard";
+import DashboardOverview from "../Dashboard/DashboardOverview";
 
 export const router = createBrowserRouter([
   {
@@ -23,16 +24,24 @@ export const router = createBrowserRouter([
         path: "/",
         loader: () => fetch("https://passion-point-server.vercel.app/groups"),
         Component: Home,
-      }
+      },
     ],
   },
   {
-    path: '/dashboard',
+    path: "/dashboard",
     Component: DashBoard,
     children: [
-           {
+      {
+        index: true,
+        Component: () => <Navigate to="/dashboard/overview" replace />,
+      },
+      {
+        path: "overview",
+        Component: DashboardOverview,
+      },
+      {
         path: "myGroups",
-        Component:()=> (
+        Component: () => (
           <PrivateRoute>
             <MyGroups />
           </PrivateRoute>
@@ -40,7 +49,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "createGroup",
-        Component:()=> (
+        Component: () => (
           <PrivateRoute>
             <CreateGroup />
           </PrivateRoute>
@@ -48,7 +57,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "allGroups",
-        Component:()=> (
+        Component: () => (
           <PrivateRoute>
             <AllGroups />
           </PrivateRoute>
@@ -58,10 +67,11 @@ export const router = createBrowserRouter([
         path: "groups/:id",
         loader: ({ params }) =>
           fetch(`https://passion-point-server.vercel.app/groups/${params.id}`),
-        Component:()=>  
-          (<PrivateRoute>
+        Component: () => (
+          <PrivateRoute>
             <GroupDetails />
-          </PrivateRoute>),
+          </PrivateRoute>
+        ),
       },
       {
         path: "updateGroup/:id",
@@ -69,13 +79,13 @@ export const router = createBrowserRouter([
           fetch(
             `https://passion-point-server.vercel.app/updateGroup/${params.id}`
           ),
-          Component:()=> (
+        Component: () => (
           <PrivateRoute>
             <UpdateGroup></UpdateGroup>
           </PrivateRoute>
         ),
       },
-    ]
+    ],
   },
   {
     path: "/auth",
