@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { AuthContext } from "../Context/AuthProvider";
 import { HiOutlineSparkles } from "react-icons/hi";
 import Swal from "sweetalert2";
+import DashboardTopBar from "./DashboardTopBar";
 
 const DashBoard = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -157,14 +158,14 @@ const DashBoard = () => {
                   </motion.div>
             <h1 className="text-2xl font-semibold">PassionPoint</h1>
           </div>
-          <nav className="space-y-2">
+          <nav className="space-y-2 mt-7">
             {navItems.map((item, i) => (
               <NavLink
                 key={i}
                 to={item.to}
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-4 py-2 rounded-lg transition hover:bg-white/20 ${
-                    isActive ? "bg-white text-teal-700 font-bold" : "text-white"
+                    isActive ? "bg-white text-teal-700 font-bold hover:text-white" : "text-white "
                   }`
                 }
               >
@@ -195,6 +196,7 @@ const DashBoard = () => {
 
       {/* ----------------- Main Outlet Content ----------------- */}
       <div className="flex-1 overflow-y-auto pt-[60px] md:pt-0 px-4 py-4 bg-teal-50 dark:bg-gray-800">
+            <DashboardTopBar user={user}></DashboardTopBar>
         <Outlet />
       </div>
     </div>

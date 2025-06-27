@@ -1,74 +1,98 @@
 import React, { useEffect, useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
-import { Link } from "react-router"; // ✅ ঠিক করলাম
+import { Link } from "react-router";
 import GroupCard from "./GroupCard";
 import noDataAnimation from "../../public/no-group.json";
 import Lottie from "lottie-react";
 import { Helmet } from "react-helmet-async";
 
 const AllGroups = () => {
-  const [search, setSearch] = useState("");
   const [groups, setGroups] = useState([]);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
+  const [sortBy, setSortBy] = useState("");
 
+  // ✅ Fetching groups with filters
   useEffect(() => {
-    fetch(`https://passion-point-server.vercel.app/groups?searchParams=${search}`)
+    const url = `http://localhost:4000/groups?search=${search}&category=${category}&sort=${sortBy}`;
+    fetch(url)
       .then((res) => res.json())
       .then((data) => setGroups(data));
-  }, [search]);
-
-  const sortGroupe = groups.sort(
-    (a, b) => new Date(b.startDate) - new Date(a.startDate)
-  );
+  }, [search, category, sortBy]);
 
   return (
-    <div className="px-4 py-10">
+    <div className="px-4 pb-10 pt-4">
       <Helmet>
         <title>All Groups | PassionPoint</title>
       </Helmet>
 
+      {/* ✅ Filters Layout */}
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-12">
+        {/* 🔍 Search + Sort Combined Box */}
+        <div className="flex items-center bg-white shadow-2xl shadow-teal-900 rounded-full px-4 py-2 w-full md:w-auto">
+          <input
+            type="text"
+            placeholder="search bar"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="bg-transparent outline-none flex-grow text-sm placeholder:text-black"
+          />
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="bg-transparent text-sm font-medium text-black outline-none ml-4"
+          >
+            <option value="">Shots</option>
+            <option value="asc">A-Z</option>
+            <option value="desc">Z-A</option>
+            <option value="startDate">Newest</option>
+            <option value="memberCount">Most Members</option>
+          </select>
 
-    <label className="flex items-center border-2 border-teal-600 rounded mb-7 px-3 py-1 focus-within:border-teal-800 max-w-sm">
-      <svg
-        className="h-4 w-4 opacity-50 mr-2"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input
-        type="search"
-        placeholder="Search"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="flex-grow bg-transparent border-none focus:outline-none text-sm"
-      />
-    </label>
+          <button className="ml-4 bg-teal-800 rounded-full p-2">
+            <svg
+              className="h-4 w-4 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
 
+        {/* 🧭 Category Dropdown */}
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="select rounded-full shadow-2xl shadow-teal-800 max-w-xs w-full md:w-auto "
+        >
+          <option value="">Select Hobby Category</option>
+          <option value="Drawing & Painting">Drawing & Painting</option>
+          <option value="Photography">Photography</option>
+          <option value="Video Gaming">Video Gaming</option>
+          <option value="Fishing">Fishing</option>
+          <option value="Running">Running</option>
+          <option value="Cooking">Cooking</option>
+          <option value="Reading">Reading</option>
+          <option value="Writing">Writing</option>
+        </select>
+      </div>
 
-
-      {/* Groups Grid */}
-      {groups.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sortGroupe.map((group, index) => (
+      {/* ✅ Group Grid or Empty State */}
+      {groups.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+          {groups.map((group, index) => (
             <GroupCard key={group._id} index={index} group={group} />
           ))}
         </div>
-      )}
-
-      {/* No Groups Message */}
-      {groups.length === 0 && (
+      ) : (
         <div className="w-full flex flex-col items-center justify-center min-h-[70vh] text-center">
-          <Lottie
-            animationData={noDataAnimation}
-            loop={true}
-            className="w-72 h-72" // Responsive size
-          />
+          <Lottie animationData={noDataAnimation} loop className="w-72 h-72" />
           <h1 className="text-2xl md:text-3xl font-bold text-teal-700 mb-2">
             No groups found.
           </h1>
