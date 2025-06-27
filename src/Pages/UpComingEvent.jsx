@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { FaStar } from "react-icons/fa";
 import { PiArrowUpRight } from "react-icons/pi";
-import { Link } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import noDataAnimation from "../../public/no-active.json";
 import Lottie from "lottie-react";
 import { motion } from "framer-motion";
 
-const UpComingEvent = ({ upcomingEvents }) => {
+const UpComingEvent = () => {
+  const groups = useLoaderData();
+  const upcomingEvents = useMemo(
+    () =>
+      groups
+        .filter(
+          (g) =>
+            new Date(g.startDate).setHours(0, 0, 0, 0) >=
+            new Date().setHours(0, 0, 0, 0)
+        )
+        .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
+        .slice(0, 6),
+    [groups]
+  );
+
   return (
     <div>
       <h2 className="text-3xl font-bold text-teal-700 mb-2 text-center my-14">

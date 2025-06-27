@@ -1,21 +1,38 @@
-import { FaHome, FaInfoCircle, FaEnvelope, FaTachometerAlt, FaBell } from "react-icons/fa";
+import {
+  FaHome,
+  FaInfoCircle,
+  FaEnvelope,
+  FaTachometerAlt,
+  FaBell,
+} from "react-icons/fa";
 import { Link } from "react-router";
 
 const DashboardTopBar = ({ user }) => {
   return (
     <div className="hidden md:flex justify-between items-center px-6 py-4 bg-teal-800 rounded-xl shadow-sm mt-2 mx-3">
-      
       {/* Left: Home, About, Contact Us icons */}
       <div className="flex items-center gap-6">
-        <Link to='/' title="Home" className="text-teal-900 bg-teal-50 rounded-full p-3 text-lg">
+        <Link
+          to="/"
+          title="Home"
+          className="text-teal-900 bg-teal-50 rounded-full p-3 text-lg"
+        >
           <FaHome />
         </Link>
-        <button title="About" className="text-teal-900 bg-teal-50 rounded-full p-3 text-lg">
+        <Link
+          to="/dashboard/about"
+          title="About"
+          className="text-teal-900 bg-teal-50 rounded-full p-3 text-lg"
+        >
           <FaInfoCircle />
-        </button>
-        <button title="Contact Us" className="text-teal-900 bg-teal-50 rounded-full p-3 text-lg">
+        </Link>
+        <Link
+          to="/dashboard/contact"
+          title="Contact Us"
+          className="text-teal-900 bg-teal-50 rounded-full p-3 text-lg"
+        >
           <FaEnvelope />
-        </button>
+        </Link>
       </div>
 
       {/* Center: Dashboard icon + text */}
@@ -30,7 +47,7 @@ const DashboardTopBar = ({ user }) => {
           <p className="text-sm text-gray-100">{user?.displayName}</p>
           <p className="text-xs text-teal-50">{user?.email}</p>
         </div>
-       
+
         <button className="text-teal-900 bg-teal-50 rounded-full p-3 text-lg">
           <FaBell className="" />
         </button>

@@ -3,7 +3,12 @@ import { FaGithub, FaSquareFacebook } from "react-icons/fa6";
 import { GrGoogle } from "react-icons/gr";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
-import { GoogleAuthProvider, ProviderId, signInWithPopup, updateProfile } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  ProviderId,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../utils/firebase.config";
 import { Bounce, toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -45,19 +50,19 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        
-        // save profile info in the db
-        fetch('http://localhost:4000/users', {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify({name, photo, email })
-        }).then(res => res.json())
-        .then(data => {
-          console.log(data)
-        })
 
+        // save profile info in the db
+        fetch("https://passion-point-server.vercel.app/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ name, photo, email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
 
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -84,7 +89,7 @@ const Register = () => {
   // google sign up
 
   const handleGoogleSignIn = () => {
-    const provider = new GoogleAuthProvider()
+    const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then(() => {
         Swal.fire({
@@ -151,14 +156,17 @@ const Register = () => {
         />
         <p className="text-sm text-red-500">{error}</p>
 
-        <button type="submit" className="px-6 py-3 mt-8 rounded-full bg-gradient-to-r from-white via-white to-[#1ad3bd] text-black font-medium shadow-md hover:scale-105 transition-transform">
+        <button
+          type="submit"
+          className="px-6 py-3 mt-8 rounded-full bg-gradient-to-r from-white via-white to-[#1ad3bd] text-black font-medium shadow-md hover:scale-105 transition-transform"
+        >
           Sign Up
         </button>
 
         <h1 className="text-center text-xl"> Or</h1>
 
         <button
-        type="button"
+          type="button"
           className="flex items-center 
           justify-center gap-2 px-4 py-2
            bg-gradient-to-l from-[#68fced]
@@ -169,7 +177,7 @@ const Register = () => {
           Continue with Github
         </button>
         <button
-        type="button"
+          type="button"
           onClick={handleGoogleSignIn}
           className="flex items-center
            justify-center gap-2 px-4

@@ -13,6 +13,9 @@ import UpdateGroup from "../Pages/UpdateGroup";
 import ErrorPage from "../Pages/ErrorPage";
 import DashBoard from "../Dashboard/DashBoard";
 import DashboardOverview from "../Dashboard/DashboardOverview";
+import UpComingEvent from "../Pages/UpComingEvent";
+import AboutUs from "../components/AboutUs";
+import Contact from "../components/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +27,19 @@ export const router = createBrowserRouter([
         path: "/",
         loader: () => fetch("https://passion-point-server.vercel.app/groups"),
         Component: Home,
+      },
+      {
+        path: "/upComing",
+        loader: () => fetch("https://passion-point-server.vercel.app/groups"),
+        Component: UpComingEvent,
+      },
+      {
+        path: "/about",
+        Component: AboutUs,
+      },
+      {
+        path: "/contact",
+        Component: Contact,
       },
     ],
   },
@@ -84,6 +100,14 @@ export const router = createBrowserRouter([
             <UpdateGroup></UpdateGroup>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "about",
+        Component: AboutUs,
+      },
+      {
+        path: "contact",
+        Component: Contact,
       },
     ],
   },

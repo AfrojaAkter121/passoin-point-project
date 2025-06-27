@@ -27,12 +27,12 @@ const DashboardOverview = () => {
       .then((data) => setMyGroups(data));
 
     //   user data
-    fetch(`http://localhost:4000/users`)
+    fetch(`https://passion-point-server.vercel.app/users`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
 
     // All Groups
-    fetch(`http://localhost:4000/groups`)
+    fetch(`https://passion-point-server.vercel.app/groups`)
       .then((res) => res.json())
       .then((data) => {
         setAllGroups(data);

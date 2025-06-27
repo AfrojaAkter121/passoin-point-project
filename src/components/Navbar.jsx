@@ -44,7 +44,7 @@ const Navbar = () => {
       });
   };
   const links = (
-    <div className="flex flex-col md:flex-row gap-8 text-lg px-8 py-2">
+    <div className="flex flex-col md:flex-row gap-7 text-lg px-8 py-2">
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -57,6 +57,43 @@ const Navbar = () => {
       >
         Home
       </NavLink>
+      <NavLink
+        to="/about"
+        className={({ isActive }) =>
+          isActive
+            ? `border-b-2 text-center text-white bg-teal-600 w-30 h-8 font-semibold rounded-lg`
+            : ` ${
+                isLoginPage || isRegister ? "text-white" : " text-teal-600"
+              } font-semibold`
+        }
+      >
+        About Us
+      </NavLink>
+      <NavLink
+        to="/upComing"
+        className={({ isActive }) =>
+          isActive
+            ? `border-b-2 text-center text-white bg-teal-600 h-8 font-semibold rounded-lg px-3`
+            : ` ${
+                isLoginPage || isRegister ? "text-white" : " text-teal-600"
+              } font-semibold`
+        }
+      >
+        Upcoming Event
+      </NavLink>
+      <NavLink
+        to="/contact"
+        className={({ isActive }) =>
+          isActive
+            ? `border-b-2 text-center text-white bg-teal-600 h-8 font-semibold rounded-lg px-3`
+            : ` ${
+                isLoginPage || isRegister ? "text-white" : " text-teal-600"
+              } font-semibold`
+        }
+      >
+        Contact
+      </NavLink>
+     
       {
         user &&  <NavLink
         to="/dashboard"

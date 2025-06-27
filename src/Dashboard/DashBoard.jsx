@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NavLink, Outlet } from "react-router";
+import { Link, NavLink, Outlet } from "react-router";
 import {
   FaUsers,
   FaPlusCircle,
@@ -7,6 +7,7 @@ import {
   FaUserCircle,
   FaCog,
   FaSignOutAlt,
+  FaHome,
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { AuthContext } from "../Context/AuthProvider";
@@ -24,7 +25,6 @@ const DashBoard = () => {
     { to: "/dashboard/createGroup", label: "Create Group", icon: <FaPlusCircle /> },
     { to: "/dashboard/allGroups", label: "All Groups", icon: <FaThList /> },
   ];
-  
 
   const handleLogout = () => {
     logOut()
@@ -42,119 +42,95 @@ const DashBoard = () => {
 
   return (
     <div className="flex h-screen overflow-hidden">
-      {/* ----------------- Small Screen Top Navbar ----------------- */}
+      {/* Small Screen Top Navbar */}
       <div className="md:hidden fixed top-0 left-0 right-0 bg-teal-800 text-white px-4 py-3 z-40 flex justify-between items-center">
+      <Link to='/' title="Home" className="text-teal-900 bg-teal-50 rounded-full p-3 text-lg">
+          <FaHome />
+        </Link>
         <h1 className="text-xl font-bold">PassionPoint</h1>
         <button onClick={() => setSidebarOpen(!sidebarOpen)}>
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
 
-      {/* ----------------- Sidebar ----------------- */}
+      {/* Sidebar for Mobile */}
       <AnimatePresence>
         {sidebarOpen && (
-          <>
-            <motion.div
-              className="fixed top-0 left-0 h-full w-64 bg-teal-800 z-50 shadow-lg p-4 flex flex-col gap-4 md:hidden"
-              variants={sidebarVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{ duration: 0.3 }}
-            >
-              {/* Brand */}
-              <div className="">
-                <div className="flex items-center gap-2 mb-">
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 4,
-                      ease: "linear",
-                    }}
-                    className="inline-block w-[30px] h-[30px]"
-                  >
-                    <HiOutlineSparkles className="text-white w-full h-full" />
-                  </motion.div>
-
-                  <h1 className="text-2xl text-white font-semibold">
-                    PassionPoint
-                  </h1>
-                </div>
-
-                {/* Nav Items */}
-                <nav className="space-y-2 mt-10">
-                  {navItems.map((item, i) => (
-                    <NavLink
-                      key={i}
-                      to={item.to}
-                      end={item.to === "/dashboard"}  // শুধু /dashboard রুটে end:true
-                      onClick={() => setSidebarOpen(false)}
-                      className={({ isActive }) =>
-                        `flex items-center gap-3 px-4 py-2 rounded-lg transition hover:bg-white/20 ${
-                          isActive
-                            ? "bg-white text-teal-700 font-bold"
-                            : "text-white"
-                        }`
-                      }
-                    >
-                      {item.icon}
-                      <span>{item.label}</span>
-                    </NavLink>
-                  ))}
-                </nav>
-              </div>
-
-              {/* Bottom Section */}
-              <div className="mt-auto space-y-2 border-t pt-4 text-white">
-                <button className="flex items-center gap-3 px-4 py-2 w-full rounded hover:bg-white/20">
-                  <FaUserCircle />
-                  Profile
-                </button>
-                <button className="flex items-center gap-3 px-4 py-2 w-full rounded hover:bg-white/20">
-                  <FaCog />
-                  Settings
-                </button>
-                <button
-                  onClick={handleLogout}
-                  className="flex items-center gap-3 px-4 py-2 w-full rounded bg-red-100 text-red-700 hover:bg-red-200 "
+          <motion.div
+            className="fixed top-0 left-0 h-full w-64 bg-teal-800 z-50 shadow-lg p-4 flex flex-col gap-4 md:hidden overflow-y-auto"
+            variants={sidebarVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{ duration: 0.3 }}
+          >
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+                  className="inline-block w-[30px] h-[30px]"
                 >
-                  <FaSignOutAlt />
-                  Logout
-                </button>
+                  <HiOutlineSparkles className="text-white w-full h-full" />
+                </motion.div>
+                <h1 className="text-2xl text-white font-semibold">PassionPoint</h1>
               </div>
-            </motion.div>
-          </>
+
+              {/* Nav Items */}
+              <nav className="space-y-2 mt-10">
+                {navItems.map((item, i) => (
+                  <NavLink
+                    key={i}
+                    to={item.to}
+                    end={item.to === "/dashboard"}
+                    onClick={() => setSidebarOpen(false)}
+                    className={({ isActive }) =>
+                      `flex items-center gap-3 px-4 py-2 rounded-lg transition hover:bg-white/20 ${
+                        isActive ? "bg-white text-teal-700 font-bold" : "text-white"
+                      }`
+                    }
+                  >
+                    {item.icon}
+                    <span>{item.label}</span>
+                  </NavLink>
+                ))}
+              </nav>
+            </div>
+
+            <div className="mt-auto space-y-2 border-t pt-4 text-white">
+              <button className="flex items-center gap-3 px-4 py-2 w-full rounded hover:bg-white/20">
+                <FaUserCircle />
+                Profile
+              </button>
+              <button className="flex items-center gap-3 px-4 py-2 w-full rounded hover:bg-white/20">
+                <FaCog />
+                Settings
+              </button>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-3 px-4 py-2 w-full rounded bg-red-100 text-red-700 hover:bg-red-200"
+              >
+                <FaSignOutAlt />
+                Logout
+              </button>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
 
-      {/* ----------------- Sidebar for Large Screen ----------------- */}
-      <div className="hidden md:flex flex-col w-64 bg-teal-800 text-white  justify-between p-4 pr-7 rounded-r-3xl">
+      {/* Sidebar for Desktop (Scrollable) */}
+      <div className="hidden md:flex flex-col w-64 bg-teal-800 text-white justify-between p-4 pr-7 rounded-r-3xl overflow-y-auto max-h-screen">
         <div>
           <div className="flex items-center gap-2 mb-6">
-          <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 4,
-                      ease: "linear",
-                    }}
-                    className="inline-block w-[30px] h-[30px]"
-                  >
-                    <HiOutlineSparkles className="text-white w-full h-full" />
-                  </motion.div>
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+              className="inline-block w-[30px] h-[30px]"
+            >
+              <HiOutlineSparkles className="text-white w-full h-full" />
+            </motion.div>
             <h1 className="text-2xl font-semibold">PassionPoint</h1>
           </div>
           <nav className="space-y-2 mt-7">
@@ -164,7 +140,7 @@ const DashBoard = () => {
                 to={item.to}
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-4 py-2 rounded-lg transition hover:bg-white/20 ${
-                    isActive ? "bg-white text-teal-700 font-bold hover:text-white" : "text-white "
+                    isActive ? "bg-white text-teal-700 font-bold hover:text-white" : "text-white"
                   }`
                 }
               >
@@ -174,7 +150,8 @@ const DashBoard = () => {
             ))}
           </nav>
         </div>
-        <div className="space-y-2 border-t pt-4 mt-4 text-white">
+
+        <div className="space-y-2 border-t pt-4 mt-10 text-white">
           <button className="flex items-center gap-3 px-4 py-2 w-full rounded hover:bg-white/20">
             <FaUserCircle />
             Profile
@@ -193,9 +170,9 @@ const DashBoard = () => {
         </div>
       </div>
 
-      {/* ----------------- Main Outlet Content ----------------- */}
+      {/* Main Content */}
       <div className="flex-1 overflow-y-auto pt-[60px] md:pt-0 px-4 py-4 bg-teal-50 dark:bg-gray-800">
-            <DashboardTopBar user={user}></DashboardTopBar>
+        <DashboardTopBar user={user} />
         <Outlet />
       </div>
     </div>

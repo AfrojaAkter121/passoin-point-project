@@ -13,7 +13,7 @@ const AllGroups = () => {
 
   // ✅ Fetching groups with filters
   useEffect(() => {
-    const url = `http://localhost:4000/groups?search=${search}&category=${category}&sort=${sortBy}`;
+    const url = `https://passion-point-server.vercel.app/groups?search=${search}&category=${category}&sort=${sortBy}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setGroups(data));

@@ -38,7 +38,7 @@ const CallToAction = () => {
             Join Passion Point and connect with vibrant hobby groups that share your interests.
           </p>
           <Link
-            to="/allGroups"
+            to="/dashboard/allGroups"
             className="inline-block bg-teal-800 text-white font-semibold px-8 py-3 rounded-full hover:bg-lime-100 hover:text-teal-900 transition duration-300"
           >
             Join a Group Now

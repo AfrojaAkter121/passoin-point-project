@@ -20,19 +20,7 @@ const Home = () => {
     )
     .slice(0, 6);
 
-  const upcomingEvents = useMemo(
-    () =>
-      groups
-        .filter(
-          (g) =>
-            new Date(g.startDate).setHours(0, 0, 0, 0) >=
-            new Date().setHours(0, 0, 0, 0)
-        )
-        .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
-        .slice(0, 6),
-    [groups]
-  );
-
+ 
   return (
     <div>
       <Helmet>
@@ -41,7 +29,7 @@ const Home = () => {
       <HobbyHeader></HobbyHeader>
       <FeaturedCard activeGroup={activeGroup}></FeaturedCard>
       <CallToAction></CallToAction>
-      <UpComingEvent upcomingEvents={upcomingEvents}></UpComingEvent>
+      <UpComingEvent ></UpComingEvent>
       <AboutHobbyHub></AboutHobbyHub>
       <Leaderboard></Leaderboard>
       <UserTestimonials></UserTestimonials>
